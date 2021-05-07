@@ -1,0 +1,15 @@
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\bin\Debug\net5.0\MISA.AMIS.Core.dll
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\obj\Debug\net5.0\MISA.AMIS.Infrastructure.csprojAssemblyReference.cache
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\obj\Debug\net5.0\MISA.AMIS.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\obj\Debug\net5.0\MISA.AMIS.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\obj\Debug\net5.0\MISA.AMIS.Infrastructure.AssemblyInfo.cs
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\bin\Debug\net5.0\MISA.AMIS.Infrastructure.deps.json
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\bin\Debug\net5.0\MISA.AMIS.Infrastructure.dll
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\bin\Debug\net5.0\ref\MISA.AMIS.Infrastructure.dll
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\bin\Debug\net5.0\MISA.AMIS.Infrastructure.pdb
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\bin\Debug\net5.0\MISA.AMIS.Core.pdb
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\obj\Debug\net5.0\MISA.AMIS.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\obj\Debug\net5.0\MISA.AMIS.Infrastructure.csproj.CopyComplete
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\obj\Debug\net5.0\MISA.AMIS.Infrastructure.dll
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\obj\Debug\net5.0\ref\MISA.AMIS.Infrastructure.dll
+C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Infrastructure\obj\Debug\net5.0\MISA.AMIS.Infrastructure.pdb

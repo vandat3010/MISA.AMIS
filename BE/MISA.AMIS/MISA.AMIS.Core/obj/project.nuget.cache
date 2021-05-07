@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ZP/KktI6BtEM9S5weXbBcwpzpZfI4MrRecwayNIj0qnn2s6je9QVuClBTD8BEWNXrfkg9vWCKUOSdi6ZGJG+6A==",
+  "dgSpecHash": "ulCsl2tFax68189bziBANwX/6H8hDDM3rJXhial9yeTz8TASWvT0Mzi8Fvmjn7IQEiqjP7JpL4o/hPTwK9PySg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nvdat\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512"
+  ],
   "logs": []
 }

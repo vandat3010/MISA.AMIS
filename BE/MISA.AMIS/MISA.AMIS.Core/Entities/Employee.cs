@@ -45,16 +45,16 @@ namespace MISA.AMIS.Core.Entities
         /// <summary>
         /// Số CMTND, CCCD
         /// </summary>
-        public string IdentityNumber { get; set; }
+        public string IdentifyNumber { get; set; }
 
         /// <summary>
         /// Ngày cấp
         /// </summary>
-        public DateTime IdentityDate { get; set; }
+        public DateTime IdentifyDate { get; set; }
         /// <summary>
         /// Địa điểm cấp
         /// </summary>
-        public string IdentityPlace { get; set; }
+        public string IdentifyPlace { get; set; }
         /// <summary>
         /// Vị trí chức vụ nhân viên
         /// </summary>
