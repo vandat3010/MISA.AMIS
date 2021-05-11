@@ -14,3 +14,19 @@ C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug
 C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.dll
 C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\ref\MISA.AMIS.Core.dll
 C:\Users\nvdat\Desktop\MISA.AMIS\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.pdb
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\bin\Debug\net5.0\MISA.AMIS.Core.deps.json
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\bin\Debug\net5.0\MISA.AMIS.Core.dll
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\bin\Debug\net5.0\ref\MISA.AMIS.Core.dll
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\bin\Debug\net5.0\MISA.AMIS.Core.pdb
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.Properties.DepartmentResources.resources
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.Properties.EmployeeResources.resources
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.Properties.ValidResources.resources
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.AssemblyInfo.cs
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.dll
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\ref\MISA.AMIS.Core.dll
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS.Core\obj\Debug\net5.0\MISA.AMIS.Core.pdb

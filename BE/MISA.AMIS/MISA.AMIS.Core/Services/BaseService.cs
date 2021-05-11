@@ -25,6 +25,7 @@ namespace MISA.AMIS.Core.Services
         /// Xóa dữ liệu có Id
         /// </summary>
         /// <param name="entityId">ID bản ghi được chọn</param>
+        /// CreatedBy: NVDAT(07/05/2021)
         public int Delete(Guid entityId)
         {
             return _baseRepository.Delete(entityId);
@@ -33,6 +34,7 @@ namespace MISA.AMIS.Core.Services
         /// <summary>
         /// Lấy tất cả dữ liệu
         /// </summary>
+        /// CreatedBy: NVDAT(07/05/2021)
         public IEnumerable<T> GetAll()
         {
             return _baseRepository.GetAll();
@@ -43,6 +45,7 @@ namespace MISA.AMIS.Core.Services
         /// </summary>
         /// <param name="entityId">Id bản ghi</param>
         /// <returns>Trả về bản ghi cần lấy theo Id</returns>
+        /// CreatedBy: NVDAT(07/05/2021)
         public T GetById(Guid entityId)
         {
             return _baseRepository.GetById(entityId);
@@ -52,21 +55,23 @@ namespace MISA.AMIS.Core.Services
         /// thêm một bản ghi
         /// </summary>
         /// <param name="entity">thông tin bản ghi cần thêm mới</param>
-        /// <returns></returns>
+        /// <returns>thông tin bản ghi được thêm</returns>
+        /// CreatedBy: NVDAT(07/05/2021)
         public int Insert(T entity)
         {
-            //Validate data
-            /* Validate(entity);
-             CustomValidate(entity);*/
+            
+             Validate(entity, HTTPType.POST);
             return _baseRepository.Insert(entity);
         }
         /// <summary>
         /// Cập nhật một bản ghi
         /// </summary>
         /// <param name="entity">thông tin bản ghi cần cập nhật</param>
-        /// <returns></returns>
+        /// <returns>Thông tin bản ghi được caaph nhật</returns>
+        /// CreatedBy: NVDAT(07/05/2021)
         public int Update(T entity)
         {
+            Validate(entity, HTTPType.PUT);
             return _baseRepository.Update(entity);
         }
         private void Validate(T entity, HTTPType http)
@@ -138,16 +143,23 @@ namespace MISA.AMIS.Core.Services
         /// Phương thức dùng để cho valid của các trường hợp riêng biệt.
         /// </summary>
         /// <param name="t">Một thực thể</param>
-        /// <param name="isInsert">Xác định insert hoặc update</param>
-        /// CreatedBy: dbhuan (29/04/2021)
+        /// <param name="http">Xác định Post hoặc Put</param>
+        /// CreatedBy: NVDAT(07/05/2021)
         protected virtual void CustomValidate(T t, HTTPType http)
         {
 
         }
 
+        /// <summary>
+        /// Phân trang đối tượng.
+        /// </summary>
+        /// <param name="pageSize">số đối tượng trên 1 trang.</param>
+        /// <param name="pageIndex">Trang số bao nhiêu.</param>
+        /// <returns>Mảng danh sách đối tượng</returns>
+        /// CreatedBy: NVDAT(07/05/2021)
         public IEnumerable<T> GetMISAEntities(int pageSize, int pageIndex)
         {
-            throw new NotImplementedException();
+            return _baseRepository.GetMISAEntities(pageSize, pageIndex);
         }
     }
 

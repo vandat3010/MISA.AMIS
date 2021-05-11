@@ -102,6 +102,7 @@ namespace MISA.AMIS.Infrastructure.Repositories
         /// </summary>
         /// <param name="entity">Thông tin bản ghi cần cập nhật</param>
         /// <returns>Trả về thông tin bản ghi đã được cập nhật</returns>
+        /// CreatedBy: NVDAT(07/05/2021)
         public int Update(T entity)
         {
             using (dbConnection = new MySqlConnection(connectionString))
@@ -117,7 +118,7 @@ namespace MISA.AMIS.Infrastructure.Repositories
         /// <param name="pageSize">số đối tượng trên 1 trang.</param>
         /// <param name="pageIndex">Trang số bao nhiêu.</param>
         /// <returns>Mảng danh sách đối tượng</returns>
-        /// CreatedBy: NXChien (07/05/2021)
+        /// CreatedBy: NVDAT(07/05/2021)
         public IEnumerable<T> GetMISAEntities(int pageSize, int pageIndex)
         {
             using (dbConnection = new MySqlConnection(connectionString))

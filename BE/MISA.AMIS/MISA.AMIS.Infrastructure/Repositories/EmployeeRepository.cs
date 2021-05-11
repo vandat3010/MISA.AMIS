@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 
 namespace MISA.AMIS.Infrastructure.Repositories
 {
-    public class EmployeeRepository: BaseRepository<Employee>, IEmployeeRepository
+    public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
-        public EmployeeRepository(IConfiguration configuration): base(configuration)
+        public EmployeeRepository(IConfiguration configuration) : base(configuration)
         {
-              
+
         }
 
         /// <summary>
@@ -28,6 +28,7 @@ namespace MISA.AMIS.Infrastructure.Repositories
         /// <param name="http">Phương thứ PUT hay POST</param>
         /// <param name="attributeValue">Giá trị của attribute</param>
         /// <returns>TRUE hoặc FALSE</returns>
+        /// createdBy: NVDAT(07/05/2021)
         public bool CheckEmployeeAttributeExist(string attribute, Guid? employeeId, HTTPType http, string attributeValue)
         {
             using (dbConnection = new MySqlConnection(connectionString))
@@ -47,6 +48,56 @@ namespace MISA.AMIS.Infrastructure.Repositories
                 var check = dbConnection.QueryFirstOrDefault<bool>(sqlCommand, parameters, commandType: CommandType.StoredProcedure);
                 return check;
             }
+        }
+
+        /// <summary>
+        /// lấy ra mã khách hàng lớn nhất
+        /// </summary>
+        /// <returns>mã khách hàng </returns>
+        /// CreatedBy: NVDAT(07/08/2021)
+        public string GetEmployeeCodeMax()
+        {
+            using (dbConnection = new MySqlConnection(connectionString))
+            {
+                var sqlComand = $"Proc_GetEmployeeCodeMax";
+                var employeeCode = dbConnection.QueryFirstOrDefault<string>(sqlComand, commandType: CommandType.StoredProcedure);
+                return employeeCode;
+            }
+        }
+
+        /// <summary>
+        /// Danh sách có lọc
+        /// </summary>
+        /// <param name="employeeFilter">Bộ lọc nhân viên</param>
+        /// <returns>Danh sách nhân viên có lọc</returns>
+        /// CreatedBy: NVDAT(10/05/2021)
+        public Pagging<Employee> GetEmployeesFilter(EmployeeFilter employeeFilter)
+        {
+            var res = new Pagging<Employee>()
+            {
+                pageIndex = employeeFilter.pageIndex,
+                pageSize = employeeFilter.pageSize
+            };
+
+            // Thiết lập kết nối DB.
+            using var connection = new MySqlConnection(connectionString);
+
+            // Tính tổng nhân viên.
+            int? totalRecord = connection.QueryFirstOrDefault<int>("Proc_GetTotalEmployees", employeeFilter, commandType: CommandType.StoredProcedure);
+
+            if (totalRecord == null)
+            {
+                return res;
+            }
+
+            res.TotalRecord = totalRecord;
+
+            // Lấy danh sách nhân viên.
+            var employees = connection.Query<Employee>("Proc_GetEmployeesFilter", employeeFilter, commandType: CommandType.StoredProcedure);
+
+            res.data = employees;
+
+            return res;
         }
     }
 }

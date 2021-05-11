@@ -12,6 +12,7 @@ namespace MISA.AMIS.Core.Interfaces.Service
         /// Lấy toàn bộ dữ liệu bản ghi
         /// </summary>
         /// <returns>Trả về dữ liệu bản ghi</returns>
+        /// CreatedBy: NVDAT(07/08/2021)
         public IEnumerable<T> GetAll();
 
         /// <summary>
@@ -19,6 +20,7 @@ namespace MISA.AMIS.Core.Interfaces.Service
         /// </summary>
         /// <param name="entityId">id đối tượng</param>
         /// <returns>Trả về bản ghi có id là entityId</returns>
+        /// CreatedBy: NVDAT(07/08/2021)
         public T GetById(Guid entityId);
 
         /// <summary>
@@ -26,6 +28,7 @@ namespace MISA.AMIS.Core.Interfaces.Service
         /// </summary>
         /// <param name="entity">đối tượng</param>
         /// <returns>Thêm thành công bản ghi mới hay không</returns>
+        /// CreatedBy: NVDAT(07/08/2021)
         public int Insert(T entity);
 
         /// <summary>
@@ -33,6 +36,7 @@ namespace MISA.AMIS.Core.Interfaces.Service
         /// </summary>
         /// <param name="entity">đối tượng</param>
         /// <returns>Cập nhật bản ghi thành công hay không</returns>
+        /// CreatedBy: NVDAT(07/08/2021)
         public int Update(T entity);
 
         /// <summary>
@@ -40,6 +44,7 @@ namespace MISA.AMIS.Core.Interfaces.Service
         /// </summary>
         /// <param name="entityId">id đối tượng</param>
         /// <returns>Xóa bản ghi thành công hay không</returns>
+        /// CreatedBy: NVDAT(07/08/2021)
         public int Delete(Guid entityId);
 
         /// <summary>
@@ -48,7 +53,7 @@ namespace MISA.AMIS.Core.Interfaces.Service
         /// <param name="pageSize">số đối tượng trên 1 trang.</param>
         /// <param name="pageIndex">Trang số bao nhiêu.</param>
         /// <returns>Mảng danh sách đối tượng</returns>
-        /// CreatedBy: NXChien (07/05/2021)
+        /// CreatedBy: NVDAT(07/08/2021)
         public IEnumerable<T> GetMISAEntities(int pageSize, int pageIndex);
     }
 }

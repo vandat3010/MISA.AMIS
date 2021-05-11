@@ -1,0 +1,50 @@
+@import "./basics/input.css";
+@import "./basics/table.css";
+@import "./basics/comboBox.css";
+@import "./basics/button.css";
+@import "./layout/_navbar.css";
+@import "./layout/_header.css";
+@import "./layout/_content.css";
+
+body{
+    font-family: 'notosans-regular';
+    font-size: 13px;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'notosans-regular';
+    src: url('../assets/fonts/notosans-regular.2cb88a13.woff2') format('opentype');
+}
+
+
+@font-face {
+    font-family: 'notosans-bold';
+    src: url('../assets/fonts/notosans-bold.3ede5aff.woff2') format('opentype');
+}
+
+@font-face {
+    font-family: 'notosans-italic';
+    src: url('../assets/fonts/notosans-italic.1c1aaac9.woff2') format('opentype');
+}
+
+@font-face {
+    font-family: 'notosans-semibold';
+    src: url('../assets/fonts/notosans-semibold.df3e6dc4.woff2') format('opentype');
+}
+::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+}
+
+::-webkit-scrollbar-track {
+    width: 6px;
+    background-color: #bbb;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #808080;
+    border-radius: 8px;
+}

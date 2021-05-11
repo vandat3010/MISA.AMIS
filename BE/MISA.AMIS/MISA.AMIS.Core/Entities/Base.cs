@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace MISA.AMIS.Core.Entities
 {
+    /// <summary>
+    /// Thông rin chung
+    /// </summary>
+    /// CreatedBy: NVDAT(07/05/2021)
     public class Base
     {
         /// <summary>

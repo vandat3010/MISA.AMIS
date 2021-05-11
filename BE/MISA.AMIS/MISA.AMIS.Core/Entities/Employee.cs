@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MISA.AMIS.Core.EmplAttribute;
+using MISA.AMIS.Core.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,22 +22,25 @@ namespace MISA.AMIS.Core.Entities
         /// <summary>
         /// Mã nhân viên
         /// </summary>
+        [PropertyRequired("")]
         public string EmployeeCode { get; set; }
 
         /// <summary>
         /// Tên nhân viên
         /// </summary>
+        [PropertyRequired("")]
+        [PropertyMaxLength(50, "")]
         public string EmployeeName { get; set; }
 
         /// <summary>
         /// Ngày sinh
         /// </summary>
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         /// <summary>
         /// giới tính
         /// </summary>
-        public int? Gender { get; set; }
+        public GenderEnum? Gender { get; set; }
 
         /// <summary>
         /// ID bộ phận, phòng ban
@@ -74,7 +79,26 @@ namespace MISA.AMIS.Core.Entities
         /// <summary>
         /// Email
         /// </summary>
+        [PropertyRequired("")]
+        [PropertyEmail("")]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Giới tính
+        /// </summary>
+        public string GenderName
+        {
+            get
+            {
+                return Gender switch
+                {
+                    GenderEnum.MALE => "Nam",
+                    GenderEnum.FEMALE => "Nữ",
+                    GenderEnum.OTHER => "Khác",
+                    _ => "Không xác định"
+                };
+            }
+        }
 
     }
 }

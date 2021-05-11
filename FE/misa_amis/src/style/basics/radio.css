@@ -1,0 +1,58 @@
+.radio-field {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+    .radio-field .radio-container {
+        position: relative;
+        cursor: pointer;
+        padding-left: 32px;
+        margin-right: 16px;
+    }
+
+        .radio-field .radio-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-field .radio-container .checkmark {
+            position:absolute;
+            left: 0;
+            top: 0;
+            height: 24px;
+            width: 24px;
+            border: 1px solid #bbbbbb;
+            border-radius: 50%;
+        }
+
+        .radio-field .radio-container:hover input ~ .checkmark {
+            background-color: #e9ebee;
+        }
+
+        .radio-field .radio-container .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .radio-field .radio-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .radio-field .radio-container input:checked ~ .checkmark{
+            border: 1px solid #019160;
+        }
+
+        .radio-field .radio-container .checkmark:after {
+            top: 4px;
+            left: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #019160;
+        }

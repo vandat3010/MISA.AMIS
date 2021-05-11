@@ -18,7 +18,22 @@ namespace MISA.AMIS.Core.Interfaces.Repository
         /// <param name="http">Phương thứ PUT hay POST</param>
         /// <param name="attributeValue">Giá trị của attribute</param>
         /// <returns>TRUE hoặc FALSE</returns>
-        /// Created By: NXCHIEN 07/05/2021
+        /// Created By: NVDAT(07/05/2021)
         public bool CheckEmployeeAttributeExist(string employeeCode, Guid? employeeId, HTTPType http, string attributeValue);
+
+        /// <summary>
+        /// Lấy ra mã Employeecode lớn nhất
+        /// </summary>
+        /// <returns>trả về mã khách hàng lớn nhất</returns>
+        /// CreatedBy: NVDAT(08/05/2021)
+        public string GetEmployeeCodeMax();
+
+        /// <summary>
+        /// Lấy danh sách nhân viên có lọc
+        /// </summary>
+        /// <param name="employeeFilter">Bộ lọc nhân viên</param>
+        /// <returns></returns>
+        ///CreatedBy: NVDAT(10/05/2021)
+        public Pagging<Employee> GetEmployeesFilter(EmployeeFilter employeeFilter);
     }
 }

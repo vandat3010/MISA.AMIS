@@ -21,11 +21,26 @@ namespace MISA.AMIS.Core.Services
         }
 
         /// <summary>
+        /// Lấy danh sách có lọc thông tin
+        /// </summary>
+        /// <param name="employeeFilter">Bộ lọc nhân viên</param>
+        /// <returns>Danh sach nhân viên</returns>
+        public Pagging<Employee> GetEmployeesFilter(EmployeeFilter employeeFilter)
+        {
+            if (employeeFilter.pageIndex <= 0 || employeeFilter.pageSize <= 0)
+            {
+                throw new ClientException("Tham số truyền vào không hợp lệ");
+            }
+            return _employeeRepository.GetEmployeesFilter(employeeFilter);
+        }
+
+
+        /// <summary>
         /// Validate dữ liệu riêng từng đối tượng
         /// </summary>
         /// <param name="entity">đối tượng cần validate</param>
         /// <param name="http">Phương thức POST hay PUT</param>
-        /// Created By: NXCHIEN 07/05/2021
+        /// Created By: NVDAT(07/05/2021)
         protected override void CustomValidate(Employee entity, HTTPType http)
         {
 

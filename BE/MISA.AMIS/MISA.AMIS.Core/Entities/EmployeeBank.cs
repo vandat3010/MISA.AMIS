@@ -9,6 +9,7 @@ namespace MISA.AMIS.Core.Entities
     /// <summary>
     /// thông tin tài khoản ngân hàng
     /// </summary>
+    /// CreatedBy: NVDAT(07/05/2021)
     public class EmployeeBank: Base
     {
         /// <summary>

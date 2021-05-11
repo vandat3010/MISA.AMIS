@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MISA.AMIS.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/[controller]s")]
     [ApiController]
     public class BaseController<T> : ControllerBase where T: class
     {

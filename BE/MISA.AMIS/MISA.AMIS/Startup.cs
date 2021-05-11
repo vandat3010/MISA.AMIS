@@ -34,6 +34,14 @@ namespace MISA.AMIS
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors(options =>
+                options.AddPolicy("MyPolicy", builder =>
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                )
+            );
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -55,7 +63,7 @@ namespace MISA.AMIS
                         Url = new Uri("https://example.com/license"),
                     }
                 });
-                
+
             });
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
@@ -78,6 +86,8 @@ namespace MISA.AMIS
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseRouting();
+
+            app.UseCors("MyPolicy");
 
             app.UseAuthorization();
 
