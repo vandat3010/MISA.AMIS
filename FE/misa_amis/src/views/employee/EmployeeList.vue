@@ -69,10 +69,10 @@
                 <td>{{ e.dateOfBirth }}</td>
                 <td>{{ e.identifyNumber }}</td>
                 <td>{{ e.employeePosition }}</td>
-                <td>Công ty Misa</td>
-                <td>123456</td>
-                <td>Techcombank</td>
-                <td>Hà nội</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td>
                   <EmployeeDropdown
                     @onClickBtnEdit="onClickBtnEditEmployee(e.employeeId)"
