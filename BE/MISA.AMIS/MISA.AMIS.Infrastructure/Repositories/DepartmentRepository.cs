@@ -13,7 +13,7 @@ namespace MISA.AMIS.Infrastructure.Repositories
     {
         public DepartmentRepository(IConfiguration configuration) : base(configuration)
         {
-         
+            
         }
     }
 }

@@ -59,20 +59,20 @@
                   <input
                     type="text"
                     class="input"
-                    :class="{ 'has-error': errors && errors.employeeName }"
-                    :value="employee && employee.employeeName"
+                    :class="{ 'has-error': errors && errors.fullName }"
+                    :value="employee && employee.fullName"
                     @input="
                       $emit('update:employee', {
                         ...employee,
-                        employeeName: $event.target.value,
+                        fullName: $event.target.value,
                       })
                     "
                     @blur.prevent="validEmployeeName"
                   />
                   <span
-                    v-if="errors && errors.employeeName"
+                    v-if="errors && errors.fullName"
                     class="text-error"
-                    >{{ errors && errors.employeeName }}</span
+                    >{{ errors && errors.fullName }}</span
                   >
                 </div>
               </div>
@@ -179,23 +179,32 @@
               <label class="label-input"
                 >Đơn vị <span style="color: #f20">*</span></label
               >
-              <input
-                type="text"
+              <select
                 class="input"
-                :class="{ 'has-error': errors && errors.employeeDepartmentId }"
-                :value="employee && employee.employeeDepartmentId"
+                :class="{ 'has-error': errors && errors.departmentId }"
                 @input="
                   $emit('update:employee', {
                     ...employee,
-                    employeeDepartmentId: $event.target.value,
+                    departmentId: $event.target.value,
                   })
                 "
                 @blur.prevent="validEmployeeDepartmentId"
-              />
+              >
+                <option value="" disabled>
+                  Vui lòng chọn đơn vị nhân viên
+                </option>
+                <option
+                  v-for="ed in departments"
+                  :key="ed.departmentId"
+                  :value="ed.departmentId"
+                >
+                  {{ ed.departmentName }}
+                </option>
+              </select>
               <span
-                v-if="errors && errors.employeeDepartmentId"
+                v-if="errors && errors.departmentId"
                 class="text-error"
-                >{{ errors && errors.employeeDepartmentId }}</span
+                >{{ errors && errors.departmentId }}</span
               >
             </div>
           </div>
@@ -226,13 +235,13 @@
                     type="date"
                     class="input"
                     :value="
-                      employee && employee.identifyDate
+                      employee && employee.dateOfIN
                         
                     "
                     @input="
                       $emit('update:employee', {
                         ...employee,
-                        identifyDate: $event.target.value,
+                        dateOfIN: $event.target.value,
                       })
                     "
                   />
@@ -248,11 +257,11 @@
                 <input
                   type="text"
                   class="input"
-                  :value="employee && employee.employeePosition"
+                  :value="employee && employee.positionName"
                   @input="
                     $emit('update:employee', {
                       ...employee,
-                      employeePosition: $event.target.value,
+                      positionName: $event.target.value,
                     })
                   "
                 />
@@ -266,11 +275,11 @@
               <input
                 type="text"
                 class="input"
-                :value="employee && employee.identifyPlace"
+                :value="employee && employee.placeOfIN"
                 @input="
                   $emit('update:employee', {
                     ...employee,
-                    identifyPlace: $event.target.value,
+                    placeOfIN: $event.target.value,
                   })
                 "
               />
@@ -283,11 +292,11 @@
               <input
                 type="text"
                 class="input"
-                :value="employee && employee.employeeAddress"
+                :value="employee && employee.address"
                 @input="
                   $emit('update:employee', {
                     ...employee,
-                    employeeAddress: $event.target.value,
+                    address: $event.target.value,
                   })
                 "
               />
@@ -315,11 +324,11 @@
               <input
                 type="text"
                 class="input"
-                :value="employee && employee.teleNumber"
+                :value="employee && employee.telephoneNumber"
                 @input="
                   $emit('update:employee', {
                     ...employee,
-                    teleNumber: $event.target.value,
+                    telephoneNumber: $event.target.value,
                   })
                 "
               />
@@ -348,7 +357,7 @@
               <input
                 type="text"
                 class="input"
-                :value="employee"
+                :value="employee && employee.bankAccountNumber"
                 @input="
                   $emit('update:employee', {
                     ...employee,
@@ -364,7 +373,7 @@
               <input
                 type="text"
                 class="input"
-                :value="employee && bankName"
+                :value="employee && employee.bankName"
                 @input="
                   $emit('update:employee', {
                     ...employee,
@@ -380,7 +389,7 @@
               <input
                 type="text"
                 class="input"
-                :value="employee && bankBranchName"
+                :value="employee && employee.bankBranchName"
                 @input="
                   $emit('update:employee', {
                     ...employee,
@@ -432,6 +441,14 @@ export default {
      */
     employee: {
       type: Object,
+      default: null,
+    },
+    /**
+     * Prop danh sách đơn vị nhân viên.
+     * CreatedBy: NVDAT(10/05/2021)
+     */
+    departments: {
+      type: Array,
       default: null,
     },
   },
@@ -497,12 +514,12 @@ export default {
       if (!val) {
         this.errors = {
           ...this.errors,
-          employeeName: "Tên nhân viên không được để trống.",
+          fullName: "Tên nhân viên không được để trống.",
         };
       } else {
         this.errors = {
           ...this.errors,
-          employeeName: null,
+          fullName: null,
         };
       }
     },

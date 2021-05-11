@@ -99,5 +99,28 @@ namespace MISA.AMIS.Infrastructure.Repositories
 
             return res;
         }
+
+        public string GetNewEmployeeCode()
+        {
+            //Thiết lập kết nối DB.
+            using var connection = new MySqlConnection(connectionString);
+            //Lấy mã nhân viên lớn nhất trên Db.
+            string? maxEmployeeCode = connection.QueryFirstOrDefault<string>("Proc_MaxEmployeeCode", commandType: CommandType.StoredProcedure);
+            if (maxEmployeeCode == null)
+            {
+                return "NV-0001";
+            }
+            string employeeCodeNumStr = string.Empty;
+            for (var i = 0; i < maxEmployeeCode.Length; i++)
+            {
+                if (char.IsDigit(maxEmployeeCode[i]))
+                {
+                    employeeCodeNumStr += maxEmployeeCode[i];
+                }
+            }
+            int employeeCodeNum = int.Parse(employeeCodeNumStr);
+            employeeCodeNum++;
+            return "NV-" + employeeCodeNum;
+        }
     }
 }

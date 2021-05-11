@@ -30,7 +30,7 @@ namespace MISA.AMIS.Core.Entities
         /// </summary>
         [PropertyRequired("")]
         [PropertyMaxLength(50, "")]
-        public string EmployeeName { get; set; }
+        public string FullName { get; set; }
 
         /// <summary>
         /// Ngày sinh
@@ -55,19 +55,19 @@ namespace MISA.AMIS.Core.Entities
         /// <summary>
         /// Ngày cấp
         /// </summary>
-        public DateTime IdentifyDate { get; set; }
+        public DateTime DateOfIN { get; set; }
         /// <summary>
         /// Địa điểm cấp
         /// </summary>
-        public string IdentifyPlace { get; set; }
+        public string PlaceOfIN { get; set; }
         /// <summary>
         /// Vị trí chức vụ nhân viên
         /// </summary>
-        public string EmployeePosition { get; set; }
+        public string PositionName { get; set; }
         /// <summary>
         /// Địa chỉ
         /// </summary>
-        public string EmployeeAddress { get; set; }
+        public string Address { get; set; }
         /// <summary>
         /// SĐT
         /// </summary>
@@ -75,14 +75,30 @@ namespace MISA.AMIS.Core.Entities
         /// <summary>
         /// SĐT cố định
         /// </summary>
-        public string TeleNumber { get; set; }
+        public string TelephoneNumber { get; set; }
         /// <summary>
         /// Email
         /// </summary>
+        
         [PropertyRequired("")]
         [PropertyEmail("")]
         public string Email { get; set; }
-
+        /// <summary>
+        /// số tài khoản
+        /// </summary>
+        public string BankAccountNumber { get; set; }
+        /// <summary>
+        /// tên ngân hàng
+        /// </summary>
+        public string BankName { get; set; }
+        /// <summary>
+        /// tên chi nhánh
+        /// </summary>
+        public string BankBranchName { get; set; }
+        /// <summary>
+        /// tỉnh thành
+        /// </summary>
+        public string BankProvinceName { get; set; }
         /// <summary>
         /// Giới tính
         /// </summary>

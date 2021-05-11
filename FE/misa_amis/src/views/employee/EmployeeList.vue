@@ -64,15 +64,15 @@
                   <label :for="e.employeeCode"></label>
                 </td>
                 <td>{{ e.employeeCode }}</td>
-                <td>{{ e.employeeName }}</td>
+                <td>{{ e.fullName }}</td>
                 <td>{{ e.genderName }}</td>
-                <td>{{ e.dateOfBirth }}</td>
+                <td>{{ e.dateOfBirth | formatDate}}</td>
                 <td>{{ e.identifyNumber }}</td>
-                <td>{{ e.employeePosition }}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ e.positionName }}</td>
+                <td>{{ e.departmentName }}</td>
+                <td>{{ e.bankAccountNumber }}</td>
+                <td>{{ e.bankName }}</td>
+                <td>{{ e.bankBranchName }}</td>
                 <td>
                   <EmployeeDropdown
                     @onClickBtnEdit="onClickBtnEditEmployee(e.employeeId)"
@@ -83,20 +83,23 @@
             </tbody>
           </table>
         </div>
-
-        <div class="divider"></div>
-
-        <EmployeePagination
-          :pageIndex="pageIndex"
-          :totalPages="totalPages"
-          :totalRecord="totalRecord"
-          @onChangePage="onChangePage"
-        />
       </div>
+
+      <div class="divider"></div>
+
+      <EmployeePagination
+        :pageIndex="pageIndex"
+        :totalPages="totalPages"
+        :totalRecord="totalRecord"
+        @onChangePage="onChangePage"
+        @onChangePageSize="onChangePageSize"
+      />
     </div>
+
     <EmployeeDialog
       :isShow="isShowEmployeeDialog"
       :employee.sync="employeeModify"
+      :departments="departments"
       @onClose="setStateEmployeeDialog(false)"
       @onPositive="saveEmployee"
     />
@@ -111,14 +114,16 @@
 </template>
 
 <script>
-import req from '../../reponse/axios'
+import req from "../../reponse/axios.js";
 
-import StateEnum from "../../enum/StateEnum"
+import StateEnum from "../../enum/StateEnum";
 
 import EmployeePagination from "./EmployeePagination.vue";
 import EmployeeDropdown from "./EmployeeDropdown.vue";
 import EmployeeDialog from "./EmployeeDialog.vue";
 import AlertDialog from "./AlertDialog.vue";
+
+import moment from "moment";
 
 export default {
   components: {
@@ -165,6 +170,12 @@ export default {
     employees: [],
 
     /**
+     * Danh sách đơn vị nhân viên.
+     * CreatedBy: NVDAT(11/05/2021)
+     */
+    departments: [],
+
+    /**
      * Thông tin nhân viên cần thêm hoặc sửa.
      *  createdBy: NVDAT(11/05/2021)
      */
@@ -187,15 +198,41 @@ export default {
      * CreatedBy: NVDAT (09/05/2021)
      */
     isShowAlertDialog: false,
-    timeOut: null
+    timeOut: null,
   }),
-  computed:{
+  filters: {
+    formatDate: function(date){
+      if(date){
+        return moment(String(date)).format("DD/MM/YYYY")
+      }
+    }
+    // getDepartmentName: function (departmentId) {
+    //   console.log("this.departments", this);
+    //   if (!departmentId || !this.departments || this.departments.length <=0 ){
+    //     return "";
+    //   }
+    //   console.log("this.departments", this.departments);
+    //   const depm = this.departments.find(p => p.departmentId === departmentId);
+    //   if(depm){
+    //     return depm.departmentName;
+    //   }
+    //   return "";
+    // },
+  },
+  computed: {
     isLoading: function () {
       return this.state == StateEnum.LOADING;
     },
     isError: function () {
       return this.state == StateEnum.ERROR;
     },
+  },
+  created(){
+     this.fetchEmployees();
+     this.fetchDepartment();
+  },
+  mounted() {
+    this.fetchEmployees();
   },
   methods: {
     /**
@@ -206,11 +243,14 @@ export default {
       this.state = StateEnum.LOADING;
       req
         .get(
-          `api/v1/Employees?pageIndex=${this.pageIndex}&pageSize=${this.pageSize}&filter=${this.filter}`
+          `api/v1/Employees/Filter?pageIndex=${this.pageIndex}&pageSize=${this.pageSize}&filter=${this.filter}`
         )
-        .then((res) => res.data)
-        .then((data) => {
-          this.employees = data.data;
+        .then((res) => {
+          const data = res.data;
+          this.employees = data.data.map(item => {
+            item.departmentName = this.getDepartmentName(item.departmentId);
+            return item;
+          });
           this.totalPages = data.totalPages;
           this.totalRecord = data.totalRecord;
           this.state = StateEnum.SUCCESS;
@@ -225,10 +265,11 @@ export default {
      * CreatedBy: NVDAT(11/05/2021)
      */
     onChangeInputEmployeeFilter(e) {
-      let val = e.target.value;
+      let value = e.target.value;
       clearTimeout(this.timeOut);
       this.timeOut = setTimeout(() => {
-        this.filter = val;
+        this.filter = value;
+        this.pageIndex = 1;
         this.fetchEmployees();
       }, 1000);
     },
@@ -265,7 +306,10 @@ export default {
       };
       if (this.employeeModify.employeeId) {
         // update
+
         reqConfig.method = "PUT";
+        reqConfig.url = `api/v1/Employees/${this.employeeModify.employeeId}`;
+        // reqConfig.data = {id : this.employeeModify.employeeId};
       }
 
       req(reqConfig).then((res) => {
@@ -277,10 +321,19 @@ export default {
     },
     /**
      * Sự kiện thay đổi trang trong phân trang.
-     * CreatedBy: NVDAT(11/05/2021)
+     * CreatedBy: NVDAT (10/05/2021)
      */
     onChangePage(pageIndex) {
       this.pageIndex = pageIndex;
+      this.fetchEmployees();
+    },
+
+    /**
+     * Sự kiện thay đổi số bản ghi trên trang.
+     * CreatedBy: NVDAT (10/05/2021)
+     */
+    onChangePageSize(pageSize) {
+      this.pageSize = pageSize;
       this.fetchEmployees();
     },
     /**
@@ -291,14 +344,14 @@ export default {
       this.state = StateEnum.LOADING;
       this.setStateAlertDialog(false);
       req
-        .delete(`api/v1/Employees/${this.employeeDel.employeeId}`)
+        .delete(`api/v1/Employees?entityId=${this.employeeDel.employeeId}`)
         .then((res) => {
           if (res.status == 200) {
             this.fetchEmployees();
           }
         });
     },
-     /**
+    /**
      * Phương thức set trạng thái employee dialog
      * @param {Boolean} state
      * CreatedBy: NVDAT(11/05/2021)
@@ -317,8 +370,9 @@ export default {
           };
           this.setStateEmployeeDialog(true);
         });
+      this.fetchDepartment();
     },
-     /**
+    /**
      * Phương thức click button sửa nhân viên.
      * CreatedBy: NVDAT(11/05/2021)
      */
@@ -330,6 +384,7 @@ export default {
         .then((data) => {
           this.employeeModify = data;
         });
+      this.fetchDepartment();
     },
 
     /**
@@ -341,7 +396,6 @@ export default {
       this.setStateAlertDialog(true);
     },
 
-
     /**
      * Phương thức set trạng thái employee dialog
      * @param {Boolean} state
@@ -350,9 +404,25 @@ export default {
     setStateAlertDialog(state) {
       this.isShowAlertDialog = state;
     },
-  },
-  mounted() {
-    this.fetchEmployees();
+
+    fetchDepartment(){
+      req("api/v1/Departments")
+        .then((res) => res.data)
+        .then((data) => {
+          this.departments = data;
+        });
+    },
+    getDepartmentName(departmentId) {
+      if (!departmentId || !this.departments || this.departments.length <=0 ){
+        return "";
+      }
+      console.log("this.departments", this.departments);
+      const depm = this.departments.find(p => p.departmentId === departmentId);
+      if(depm){
+        return depm.departmentName;
+      }
+      return "";
+    },
   },
 };
 </script>

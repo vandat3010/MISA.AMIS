@@ -68,6 +68,7 @@ body {
   font-size: 13px;
   font-family: NotoSans;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 /* width */
@@ -161,6 +162,9 @@ body {
 
   &.icon-warning-48 {
     .icon-bind(-592px -456px, 48px);
+  }
+  &.icon-error {
+    .icon-bind(-746px -456px, 48px);
   }
 }
 
@@ -279,6 +283,7 @@ body {
     align-items: center;
     justify-content: space-between;
     height: 64px;
+    flex-shrink: 0;
 
     .title {
       font-size: 24px;
@@ -293,13 +298,20 @@ body {
     background-color: @color-white;
     padding: 16px;
     height: 64px;
+    flex-shrink: 0;
   }
 
-  .scroll {
+  .data {
     flex: 1;
-    overflow: auto;
     background-color: @color-white;
-    padding: 0 16px 16px 16px;
+    padding-bottom: 16px;
+    overflow: hidden;
+
+    .scroll {
+      padding: 0 16px;
+      height: 100%;
+      overflow: auto;
+    }
 
     .table-option {
       .flex-row();
@@ -317,7 +329,6 @@ body {
   .divider {
     height: 4px;
     background-color: #f4f5f6;
-    margin: 0 16px;
   }
 
   .pagination {
@@ -333,17 +344,22 @@ body {
 
       .pager {
         .flex-row();
+        align-items: center;
 
         .page {
           padding-left: 8px;
           padding-right: 8px;
           text-decoration: none;
           cursor: pointer;
+          color: #000;
 
           &.active {
+            color: #ccc;
             border: 1px solid #ccc;
             padding-left: 4px;
             padding-right: 4px;
+            font-weight: bold;
+            background-color: #2ca01c;
           }
 
           &.disable {
@@ -351,6 +367,30 @@ body {
           }
         }
       }
+    }
+  }
+
+  .flex-center {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2000;
+
+    .loader {
+      background-image: url("./assets/loading.svg");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 32px;
+      width: 32px;
+      transform: rotate(45 16 16);
     }
   }
 }
@@ -423,6 +463,7 @@ body {
       background-color: #38393d;
       color: @color-white;
       padding: 8px;
+      z-index: 10;
     }
   }
 }
@@ -535,15 +576,12 @@ body {
 .table {
   width: 100%;
   border-collapse: collapse;
-  background-color: @color-white;
 
   th,
   td {
     border: 1px solid #ccc;
     text-align: left;
-    font: 12px;
-    padding-left: 8px;
-    
+    padding: 0 16px;
   }
 
   thead {

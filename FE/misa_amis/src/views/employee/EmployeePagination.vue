@@ -4,7 +4,17 @@
       Tổng số: <b>{{ totalRecord }}</b> bản ghi
     </div>
     <div class="pagination-right">
-      <Autcomplete />
+      <select
+        class="input"
+        :value="pageSize"
+        @change="$emit('onChangePageSize', $event.target.value)"
+      >
+        <option value="10">10 bản ghi trên trang</option>
+        <option value="20">20 bản ghi trên trang</option>
+        <option value="30">30 bản ghi trên trang</option>
+        <option value="50">50 bản ghi trên trang</option>
+        <option value="100">100 bản ghi trên trang</option>
+      </select>
       <div class="pager">
         <div
           class="page"
@@ -57,15 +67,11 @@
 </template>
 
 <script>
-import Autcomplete from "../../components/Autocomplete.vue";
 export default {
-  components: {
-    Autcomplete,
-  },
   props: {
     /**
      * Prop tổng số trang.
-     * CreatedBy: dbhuan (09/05/2021)
+     * CreatedBy: NVDAT (09/05/2021)
      */
     totalPages: {
       type: Number,
@@ -74,7 +80,7 @@ export default {
 
     /**
      * Tổng số bản ghi
-     * CreatedBy: dbhuan (10/05/2021)
+     * CreatedBy: NVDAT (10/05/2021)
      */
     totalRecord: {
       type: Number,
@@ -83,9 +89,18 @@ export default {
 
     /**
      * Prop trang hiện tại
-     * CreatedBy: dbhuan (09/05/2021)
+     * CreatedBy: NVDAT (09/05/2021)
      */
     pageIndex: {
+      type: Number,
+      default: 1,
+    },
+
+    /**
+     * Tổng số bản ghi trên trang.
+     * CreatedBy: NVDAT (11/05/2021)
+     */
+    pageSize: {
       type: Number,
       default: 1,
     },

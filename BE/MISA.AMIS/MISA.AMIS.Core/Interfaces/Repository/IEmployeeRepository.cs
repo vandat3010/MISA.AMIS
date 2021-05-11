@@ -35,5 +35,12 @@ namespace MISA.AMIS.Core.Interfaces.Repository
         /// <returns></returns>
         ///CreatedBy: NVDAT(10/05/2021)
         public Pagging<Employee> GetEmployeesFilter(EmployeeFilter employeeFilter);
+
+        /// <summary>
+        /// Tạo mã nhân viên mới
+        /// </summary>
+        /// <returns>Mã nhân viên mới</returns>
+        /// CreatedBy: NVDAT(11/05/2021)
+        public string GetNewEmployeeCode();
     }
 }
