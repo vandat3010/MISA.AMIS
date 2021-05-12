@@ -70,7 +70,7 @@
 export default {
   props: {
     /**
-     * Prop tổng số trang.
+     *  tổng số trang.
      * CreatedBy: NVDAT (09/05/2021)
      */
     totalPages: {
@@ -88,7 +88,7 @@ export default {
     },
 
     /**
-     * Prop trang hiện tại
+     * trang hiện tại
      * CreatedBy: NVDAT (09/05/2021)
      */
     pageIndex: {
