@@ -25,7 +25,7 @@ export default {
 // Stylesheet chung.
 @font-face {
   font-family: NotoSans;
- src: url("./assets/fonts/notosans-regular.2cb88a13.woff2") format("woff2");
+  src: url("./assets/fonts/notosans-regular.2cb88a13.woff2") format("woff2");
 }
 
 // Biến chung.
@@ -773,5 +773,4 @@ body {
   .flex-row();
   flex-wrap: wrap;
 }
-
 </style>

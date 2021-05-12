@@ -39,9 +39,13 @@
           <table class="table">
             <thead>
               <tr>
-                <th><input
+                <th>
+                  <input
                     type="checkbox"
-                  /></th>
+                    @click="checkAll()"
+                    v-model="isCheckAll"
+                  />
+                </th>
                 <th>MÃ NHÂN VIÊN</th>
                 <th>TÊN NHÂN VIÊN</th>
                 <th>GIỚI TÍNH</th>
@@ -61,13 +65,15 @@
                   <input
                     type="checkbox"
                     :id="e.employeeCode"
+                    v-model="employeesTemp[e.employeeCode]"
+                    @change="updateCheck($event, e.employeeCode)"
                   />
                   <label :for="e.employeeCode"></label>
                 </td>
                 <td>{{ e.employeeCode }}</td>
                 <td>{{ e.fullName }}</td>
                 <td>{{ e.genderName }}</td>
-                <td>{{ e.dateOfBirth | formatDate}}</td>
+                <td>{{ e.dateOfBirth | formatDate }}</td>
                 <td>{{ e.identifyNumber }}</td>
                 <td>{{ e.positionName }}</td>
                 <td>{{ e.departmentName }}</td>
@@ -147,9 +153,9 @@ const employeeDefault = {
   modifiedDate: null,
   phoneNumber: null,
   placeOfIN: null,
-  positionName:null,
-  telephoneNumber: null
-}
+  positionName: null,
+  telephoneNumber: null,
+};
 export default {
   components: {
     EmployeePagination,
@@ -158,6 +164,10 @@ export default {
     AlertDialog,
   },
   data: () => ({
+    /**
+     * biến xác định check tất cả bản ghi hay không
+     */
+    isCheckAll: false,
     state: StateEnum.LOADING,
     /**
      * trang hien tai
@@ -169,7 +179,7 @@ export default {
      * so ban ghi tren 1 trang
      * createdBy: NVDAT(11/05/2021)
      */
-    pageSize: 20,
+    pageSize: 10,
 
     /**
      * bộ lọc nhân viên
@@ -224,13 +234,14 @@ export default {
      */
     isShowAlertDialog: false,
     timeOut: null,
+    employeesTemp: [],
   }),
   filters: {
-    formatDate: function(date){
-      if(date){
-        return moment(String(date)).format("DD/MM/YYYY")
+    formatDate: function (date) {
+      if (date) {
+        return moment(String(date)).format("DD/MM/YYYY");
       }
-    }
+    },
     // getDepartmentName: function (departmentId) {
     //   console.log("this.departments", this);
     //   if (!departmentId || !this.departments || this.departments.length <=0 ){
@@ -252,9 +263,9 @@ export default {
       return this.state == StateEnum.ERROR;
     },
   },
-  created(){
-     this.fetchEmployees();
-     this.fetchDepartment();
+  created() {
+    this.fetchEmployees();
+    this.fetchDepartment();
   },
   mounted() {
     this.fetchEmployees();
@@ -272,7 +283,7 @@ export default {
         )
         .then((res) => {
           const data = res.data;
-          this.employees = data.data.map(item => {
+          this.employees = data.data.map((item) => {
             item.departmentName = this.getDepartmentName(item.departmentId);
             return item;
           });
@@ -427,24 +438,54 @@ export default {
     setStateAlertDialog(state) {
       this.isShowAlertDialog = state;
     },
-
-    fetchDepartment(){
+    /**
+     * Lấy dữ liệu bộ phận từ api.
+     * CreatedBy: NVDAT(10/05/2021)
+     */
+    fetchDepartment() {
       req("api/v1/Departments")
         .then((res) => res.data)
         .then((data) => {
           this.departments = data;
         });
     },
+    /**
+     * lấy ra tên phòng ban bộ phận
+     * CreatedBy: NVDAT(11/05/2021)
+     */
     getDepartmentName(departmentId) {
-      if (!departmentId || !this.departments || this.departments.length <=0 ){
+      if (!departmentId || !this.departments || this.departments.length <= 0) {
         return "";
       }
-      console.log("this.departments", this.departments);
-      const depm = this.departments.find(p => p.departmentId === departmentId);
-      if(depm){
+      const depm = this.departments.find(
+        (p) => p.departmentId === departmentId
+      );
+      if (depm) {
         return depm.departmentName;
       }
       return "";
+    },
+    checkAll() {
+      this.isCheckAll = !this.isCheckAll;
+      this.employeesTemp = [];
+      if (this.isCheckAll) {
+        // Check all
+        this.employees.forEach((item) => {
+          this.employeesTemp[item.employeeCode] = true;
+        });
+      }
+    },
+    updateCheck(event, employeeCode) {
+      if (!event.target.checked) {
+        delete this.employeesTemp[employeeCode];
+      } else {
+        this.employeesTemp[employeeCode] = true;
+      }
+      if (this.employees.length == Object.keys(this.employeesTemp).length) {
+        this.isCheckAll = true;
+      } else {
+        this.isCheckAll = false;
+      }
     },
   },
 };

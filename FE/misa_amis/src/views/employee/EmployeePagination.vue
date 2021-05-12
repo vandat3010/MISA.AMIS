@@ -101,7 +101,9 @@ export default {
       let ps = [];
       let start = this.pageIndex > 3 ? this.pageIndex - 1 : 2;
       let end =
-        this.pageIndex < this.totalPages - 3 ? this.pageIndex + 1 : this.totalPages - 1;
+        this.pageIndex < this.totalPages - 3
+          ? this.pageIndex + 1
+          : this.totalPages - 1;
       for (let i = start; i <= end; i++) ps.push(i);
       return ps;
     },

@@ -415,11 +415,10 @@
           </button>
         </div>
         <div class="dialog-footer-right">
-          <button class="btn btn-secondary" @click.prevent="onClickSave">Cất</button>
-          <button
-            class="btn btn-primary"
-            style="margin-left: 8px"
-          >
+          <button class="btn btn-secondary" @click.prevent="onClickSave">
+            Cất
+          </button>
+          <button class="btn btn-primary" style="margin-left: 8px">
             Cất và thêm
           </button>
         </div>
