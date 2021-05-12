@@ -124,7 +124,7 @@
                         "
                       />
                       <label for="male"></label>
-                      <label style="margin-left: 8px">Nam</label>
+                      <label style="margin-left: 8px">Nữ</label>
                     </div>
                     <div
                       class="flex-row-align-center"
@@ -145,7 +145,7 @@
                         "
                       />
                       <label for="female"></label>
-                      <label style="margin-left: 8px">Nữ</label>
+                      <label style="margin-left: 8px">Nam</label>
                     </div>
                     <div
                       class="flex-row-align-center"

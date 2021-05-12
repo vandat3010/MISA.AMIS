@@ -74,6 +74,12 @@ namespace MISA.AMIS.Core.Services
             Validate(entity, HTTPType.PUT);
             return _baseRepository.Update(entity);
         }
+        /// <summary>
+        /// validate dữ liệu
+        /// </summary>
+        /// <param name="entity">Dối tượng  cần validate</param>
+        /// <param name="http">phương thức</param>
+        /// CreatedBy:NVDAT(07/05/2021)
         private void Validate(T entity, HTTPType http)
         {
             // Lấy ra tất cả property của đối tượng

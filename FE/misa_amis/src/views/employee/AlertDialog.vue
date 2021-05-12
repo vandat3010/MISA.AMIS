@@ -41,7 +41,7 @@ export default {
 
     /**
      * Prop mã nhân viên.
-     * CreatedBy: dbhuan (10/05/2021)
+     * CreatedBy: NVDAT (10/05/2021)
      */
     employeeCode: {
       type: String,
