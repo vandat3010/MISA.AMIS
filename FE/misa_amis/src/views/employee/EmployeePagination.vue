@@ -6,7 +6,6 @@
     <div class="pagination-right">
       <select
         class="input"
-        :value="pageSize"
         @change="$emit('onChangePageSize', $event.target.value)"
       >
         <option value="10">10 bản ghi trên trang</option>
@@ -92,15 +91,6 @@ export default {
      * CreatedBy: NVDAT (09/05/2021)
      */
     pageIndex: {
-      type: Number,
-      default: 1,
-    },
-
-    /**
-     * Tổng số bản ghi trên trang.
-     * CreatedBy: NVDAT (11/05/2021)
-     */
-    pageSize: {
       type: Number,
       default: 1,
     },
