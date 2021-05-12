@@ -11,12 +11,12 @@
       <div class="dialog-header">
         <div class="dialog-title">Thông tin nhân viên</div>
         <div class="option">
-          <input type="checkbox" class="checkbox" id="is-customer" />
+          <input type="checkbox" id="is-customer" />
           <label for="is-customer"></label>
           <label style="margin-left: 8px">Là khách hàng</label>
         </div>
         <div class="option">
-          <input type="checkbox" class="checkbox" id="is-provider" />
+          <input type="checkbox" id="is-provider" />
           <label for="is-provider"></label>
           <label style="margin-left: 8px">Là nhà cung cấp</label>
         </div>
@@ -69,11 +69,9 @@
                     "
                     @blur.prevent="validEmployeeName"
                   />
-                  <span
-                    v-if="errors && errors.fullName"
-                    class="text-error"
-                    >{{ errors && errors.fullName }}</span
-                  >
+                  <span v-if="errors && errors.fullName" class="text-error">{{
+                    errors && errors.fullName
+                  }}</span>
                 </div>
               </div>
             </div>
@@ -179,7 +177,7 @@
               <label class="label-input"
                 >Đơn vị <span style="color: #f20">*</span></label
               >
-              <select
+              <!-- <select
                 class="input"
                 :class="{ 'has-error': errors && errors.departmentId }"
                 @input="
@@ -200,12 +198,18 @@
                 >
                   {{ ed.departmentName }}
                 </option>
-              </select>
-              <span
-                v-if="errors && errors.departmentId"
-                class="text-error"
-                >{{ errors && errors.departmentId }}</span
+              </select> -->
+              <model-list-select
+                :list="departments"
+                v-model="employee.departmentId"
+                option-value="departmentId"
+                option-text="departmentName"
+                placeholder="chọn phòng ban"
               >
+              </model-list-select>
+              <span v-if="errors && errors.departmentId" class="text-error">{{
+                errors && errors.departmentId
+              }}</span>
             </div>
           </div>
 
@@ -236,7 +240,8 @@
                     class="input"
                     :value="
                       employee && employee.dateOfIN
-                        
+                        ? formatYYYMMDD(employee.dateOfIN)
+                        : null
                     "
                     @input="
                       $emit('update:employee', {
@@ -410,10 +415,11 @@
           </button>
         </div>
         <div class="dialog-footer-right">
-          <button class="btn btn-secondary" @click.prevent="onClickSave">
-            Cất
-          </button>
-          <button class="btn btn-primary" style="margin-left: 8px">
+          <button class="btn btn-secondary" @click.prevent="onClickSave">Cất</button>
+          <button
+            class="btn btn-primary"
+            style="margin-left: 8px"
+          >
             Cất và thêm
           </button>
         </div>
@@ -424,7 +430,11 @@
 
 <script>
 import dayjs from "dayjs";
+import { ModelListSelect } from "vue-search-select";
 export default {
+  components: {
+    ModelListSelect,
+  },
   props: {
     /**
      * Prop xác định trạng thái dialog.
@@ -441,7 +451,6 @@ export default {
      */
     employee: {
       type: Object,
-      default: null,
     },
     /**
      * Prop danh sách đơn vị nhân viên.

@@ -1,10 +1,11 @@
-@import "./basics/input.css";
+
 @import "./basics/table.css";
-@import "./basics/comboBox.css";
+/* @import "./basics/comboBox.css"; */
 @import "./basics/button.css";
-@import "./layout/_navbar.css";
-@import "./layout/_header.css";
-@import "./layout/_content.css";
+@import "./layout/navbar.css";
+@import "./layout/header.css";
+@import "./basics/checkbox.css";
+
 
 body{
     font-family: 'notosans-regular';

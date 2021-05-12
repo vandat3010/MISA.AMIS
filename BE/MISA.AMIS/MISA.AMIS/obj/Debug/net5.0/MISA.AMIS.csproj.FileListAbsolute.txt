@@ -109,3 +109,6 @@ C:\Users\Admin\Desktop\new\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS\obj\Debug\net5.0\MIS
 C:\Users\Admin\Desktop\new\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS\obj\Debug\net5.0\ref\MISA.AMIS.dll
 C:\Users\Admin\Desktop\new\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS\obj\Debug\net5.0\MISA.AMIS.pdb
 C:\Users\Admin\Desktop\new\MISA.AMIS\BE\MISA.AMIS\MISA.AMIS\obj\Debug\net5.0\MISA.AMIS.genruntimeconfig.cache
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS\bin\Debug\net5.0\EPPlus.dll
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS\bin\Debug\net5.0\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\Admin\Desktop\BT nâng cao\BE\MISA.AMIS\MISA.AMIS\bin\Debug\net5.0\System.Xml.XPath.XmlDocument.dll

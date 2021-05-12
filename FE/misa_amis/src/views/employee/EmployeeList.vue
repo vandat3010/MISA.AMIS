@@ -39,7 +39,9 @@
           <table class="table">
             <thead>
               <tr>
-                <th>#</th>
+                <th><input
+                    type="checkbox"
+                  /></th>
                 <th>MÃ NHÂN VIÊN</th>
                 <th>TÊN NHÂN VIÊN</th>
                 <th>GIỚI TÍNH</th>
@@ -58,7 +60,6 @@
                 <td>
                   <input
                     type="checkbox"
-                    class="checkbox"
                     :id="e.employeeCode"
                   />
                   <label :for="e.employeeCode"></label>
@@ -125,6 +126,30 @@ import AlertDialog from "./AlertDialog.vue";
 
 import moment from "moment";
 
+const employeeDefault = {
+  address: null,
+  bankAccountNumber: null,
+  bankBranchName: null,
+  bankName: null,
+  bankProvinceName: null,
+  createdBy: null,
+  createdDate: null,
+  dateOfBirth: null,
+  dateOfIN: null,
+  departmentId: null,
+  email: null,
+  employeeCode: null,
+  fullName: null,
+  gender: 0,
+  genderName: null,
+  identifyNumber: null,
+  modifiedBy: null,
+  modifiedDate: null,
+  phoneNumber: null,
+  placeOfIN: null,
+  positionName:null,
+  telephoneNumber: null
+}
 export default {
   components: {
     EmployeePagination,
@@ -179,7 +204,7 @@ export default {
      * Thông tin nhân viên cần thêm hoặc sửa.
      *  createdBy: NVDAT(11/05/2021)
      */
-    employeeModify: null,
+    employeeModify: employeeDefault,
 
     /**
      * Thông tin nhân viên cần xóa.
@@ -361,13 +386,11 @@ export default {
     },
 
     showEmployeeDialog() {
-      this.employeeModify = null;
+      this.employeeModify = employeeDefault;
       req("api/v1/Employees/NewEmployeeCode")
         .then((res) => res.data)
         .then((data) => {
-          this.employeeModify = {
-            employeeCode: data,
-          };
+          this.employeeModify.employeeCode = data;
           this.setStateEmployeeDialog(true);
         });
       this.fetchDepartment();
@@ -377,7 +400,7 @@ export default {
      * CreatedBy: NVDAT(11/05/2021)
      */
     onClickBtnEditEmployee(employeeId) {
-      this.employeeModify = null;
+      this.employeeModify = employeeDefault;
       this.setStateEmployeeDialog(true);
       req(`api/v1/Employees/${employeeId}`)
         .then((res) => res.data)
