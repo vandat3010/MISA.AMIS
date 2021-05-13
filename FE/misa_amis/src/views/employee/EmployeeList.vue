@@ -356,6 +356,7 @@ export default {
      */
     saveEmployee() {
       this.state = StateEnum.LOADING;
+      this.employeeCodeExists = null;
       var reqConfig = {
         url: "api/v1/Employees",
         method: "POST",
@@ -363,10 +364,8 @@ export default {
       };
       if (this.employeeModify.employeeId) {
         // update
-
         reqConfig.method = "PUT";
         reqConfig.url = `api/v1/Employees/${this.employeeModify.employeeId}`;
-        // reqConfig.data = {id : this.employeeModify.employeeId};
       }
       var _self = this;
       req(reqConfig)
@@ -384,7 +383,41 @@ export default {
             _self.requestStatus.message =
               "Đã có lỗi xảy ra, vui lòng liên hệ quản trị viên!";
           }
+        })
+        .finally(() => {
+          this.state = StateEnum.SUCCESS;
         });
+      // saveEmployee() {
+      //   this.state = StateEnum.LOADING;
+      //   var reqConfig = {
+      //     url: "api/v1/Employees",
+      //     method: "POST",
+      //     data: this.employeeModify,
+      //   };
+      //   if (this.employeeModify.employeeId) {
+      //     // update
+
+      //     reqConfig.method = "PUT";
+      //     reqConfig.url = `api/v1/Employees/${this.employeeModify.employeeId}`;
+      //     // reqConfig.data = {id : this.employeeModify.employeeId};
+      //   }
+      // var _self = this;
+      // req(reqConfig)
+      //   .then((res) => {
+      //     if (res.status != 204) {
+      //       this.setStateEmployeeDialog(false);
+      //       this.fetchEmployees();
+      //     }
+      //   })
+      //   .catch(function (error) {
+      //     _self.requestStatus.isShowMessage = true;
+      //     if (error.response && error.response.data.devMsg) {
+      //       _self.requestStatus.message = error.response.data.devMsg;
+      //     } else {
+      //       _self.requestStatus.message =
+      //         "Đã có lỗi xảy ra, vui lòng liên hệ quản trị viên!";
+      //     }
+      //   });
     },
     /**
      * Sự kiện thay đổi trang trong phân trang.

@@ -87,7 +87,7 @@
                     class="input"
                     :value="
                       employee && employee.dateOfBirth
-                        ? formatDateDDMMYYY(employee.dateOfBirth)
+                        ? formatYYYMMDD(employee.dateOfBirth)
                         : null
                     "
                     @input="
@@ -240,7 +240,7 @@
                     class="input"
                     :value="
                       employee && employee.dateOfIN
-                        ? formatDateDDMMYYY(employee.dateOfIN)
+                        ? formatYYYMMDD(employee.dateOfIN)
                         : null
                     "
                     @input="
@@ -504,8 +504,8 @@ export default {
      * Hàm format date về dạng YYYY-MM-DD
      * CreatedBy: NVDAT(10/05/2021)
      */
-    formatDateDDMMYYY(dateStr) {
-      return dateStr ? dayjs(dateStr).format("DD/MM/YYYY") : "Không xác định";
+    formatYYYMMDD(dateStr) {
+      return dateStr ? dayjs(dateStr).format("YYYY-MM-DD") : null;
     },
 
     /**
