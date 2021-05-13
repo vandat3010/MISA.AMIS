@@ -354,12 +354,12 @@ body {
           color: #000;
 
           &.active {
-            color: #ccc;
+            // color: #ccc;
             border: 1px solid #ccc;
             padding-left: 4px;
             padding-right: 4px;
             font-weight: bold;
-            background-color: #2ca01c;
+            // background-color: #2ca01c;
           }
 
           &.disable {

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS\\MISA.AMIS.csproj": {}
+    "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS\\MISA.AMIS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj": {
+    "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj",
+        "projectUniqueName": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj",
         "projectName": "MISA.AMIS.Core",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Core\\obj\\",
+        "projectPath": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj",
+        "packagesPath": "C:\\Users\\nvdat\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nvdat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,21 +64,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Infrastructure\\MISA.AMIS.Infrastructure.csproj": {
+    "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Infrastructure\\MISA.AMIS.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Infrastructure\\MISA.AMIS.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Infrastructure\\MISA.AMIS.Infrastructure.csproj",
         "projectName": "MISA.AMIS.Infrastructure",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Infrastructure\\MISA.AMIS.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Infrastructure\\MISA.AMIS.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\nvdat\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nvdat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,8 +92,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj": {
-                "projectPath": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj"
+              "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj": {
+                "projectPath": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj"
               }
             }
           }
@@ -136,21 +136,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS\\MISA.AMIS.csproj": {
+    "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS\\MISA.AMIS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS\\MISA.AMIS.csproj",
+        "projectUniqueName": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS\\MISA.AMIS.csproj",
         "projectName": "MISA.AMIS",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS\\MISA.AMIS.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS\\obj\\",
+        "projectPath": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS\\MISA.AMIS.csproj",
+        "packagesPath": "C:\\Users\\nvdat\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nvdat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -164,11 +164,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj": {
-                "projectPath": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj"
+              "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj": {
+                "projectPath": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Core\\MISA.AMIS.Core.csproj"
               },
-              "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Infrastructure\\MISA.AMIS.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Admin\\Desktop\\BT nâng cao\\BE\\MISA.AMIS\\MISA.AMIS.Infrastructure\\MISA.AMIS.Infrastructure.csproj"
+              "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Infrastructure\\MISA.AMIS.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\nvdat\\Desktop\\MISA.AMIS\\MISA.AMIS\\BE\\MISA.AMIS\\MISA.AMIS.Infrastructure\\MISA.AMIS.Infrastructure.csproj"
               }
             }
           }
@@ -210,7 +210,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

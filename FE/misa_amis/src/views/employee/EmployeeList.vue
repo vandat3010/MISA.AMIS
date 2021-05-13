@@ -117,12 +117,16 @@
       @onOk="delEmployee"
       @onClose="setStateAlertDialog(false)"
     />
+<<<<<<< HEAD
 
     <PopUpWarning :isShow="requestStatus.isShowMessage"
     :message="requestStatus.message"
     :closeBtn="optionPopUpMessage.closeBtn"
     :okBtn="optionPopUpMessage.okBtn"
     @onClose="closeMesasge" />
+=======
+    
+>>>>>>> 69a13fc06997215babebf210699999b0d40915f9
   </div>
 </template>
 
