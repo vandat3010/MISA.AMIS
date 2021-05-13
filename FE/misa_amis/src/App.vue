@@ -594,15 +594,6 @@ body {
       }
     }
   }
-  thead, tbody{
-    tr{
-      height: 32px;
-    th,td:last-child{
-      position: sticky;
-        left: 0;
-    }
-    }
-  }
 
   tbody {
     tr {
