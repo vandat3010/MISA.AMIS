@@ -6,20 +6,19 @@
         <div class="flex-row-align-center" style="padding-top: 32px">
           <div class="icon icon-warning-48"></div>
           <div style="margin-left: 16px">
-            Bạn có thực sự muốn xóa nhân viên &lt;{{ employeeCode || "" }}&gt;
-            không ?
+            {{ message }}
           </div>
         </div>
       </div>
       <div class="dialog-footer">
-        <div class="dialog-footer-left">
-          <button class="btn btn-secondary" @click.prevent="closeDialog">
-            Không
+        <div class="dialog-footer-left" v-show="closeBtn.isShow">
+          <button class="btn btn-secondary" @click.prevent="onClose">
+            {{ closeBtn.label }}
           </button>
         </div>
-        <div class="dialog-footer-right">
-          <button class="btn btn-primary" @click.prevent="$emit('onPositive')">
-            Có
+        <div class="dialog-footer-right" v-show="okBtn.isShow">
+          <button class="btn btn-primary" @click.prevent="onOK">
+            {{ okBtn.label }}
           </button>
         </div>
       </div>
@@ -43,19 +42,34 @@ export default {
      * Prop mã nhân viên.
      * CreatedBy: NVDAT (10/05/2021)
      */
-    employeeCode: {
+    message: {
       type: String,
-      default: null,
+      default:
+        "Đã có lỗi xảy ra vui lòng liên hệ quản trị viên để được hỗ trợ!",
+    },
+    closeBtn: {
+      type: Object,
+      default() {
+        return { isShow: true, label: "Đóng" };
+      },
+    },
+    okBtn: {
+      type: Object,
+      default() {
+        return { isShow: true, label: "Ok" };
+      },
     },
   },
-
   methods: {
     /**
      * Phương thức đóng dialog.
      * CreatedBy: NVDAT(10/05/2021)
      */
-    closeDialog() {
+    onClose() {
       this.$emit("onClose");
+    },
+    onOK() {
+      this.$emit("onOk");
     },
   },
 };

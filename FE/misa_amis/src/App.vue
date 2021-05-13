@@ -589,7 +589,18 @@ body {
       height: 32px;
       th {
         background-color: #f4f5f6;
+        position: sticky;
+        top: 0;
       }
+    }
+  }
+  thead, tbody{
+    tr{
+      height: 32px;
+    th,td:last-child{
+      position: sticky;
+        left: 0;
+    }
     }
   }
 

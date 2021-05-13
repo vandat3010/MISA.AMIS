@@ -108,15 +108,21 @@
       :employee.sync="employeeModify"
       :departments="departments"
       @onClose="setStateEmployeeDialog(false)"
-      @onPositive="saveEmployee"
+      @onSave="saveEmployee"
     />
 
-    <AlertDialog
-      :isShow="isShowAlertDialog"
-      :employeeCode="employeeDel && employeeDel.employeeCode"
-      @onPositive="delEmployee"
+    <PopUpWarning
+      :isShow="isShowConfirmDel"
+      :message="`Bạn có thực sự muốn xóa nhân viên ${employeeDel.employeeCode} không?`"
+      @onOk="delEmployee"
       @onClose="setStateAlertDialog(false)"
     />
+
+    <PopUpWarning :isShow="requestStatus.isShowMessage"
+    :message="requestStatus.message"
+    :closeBtn="optionPopUpMessage.closeBtn"
+    :okBtn="optionPopUpMessage.okBtn"
+    @onClose="closeMesasge" />
   </div>
 </template>
 
@@ -128,10 +134,10 @@ import StateEnum from "../../enum/StateEnum";
 import EmployeePagination from "./EmployeePagination.vue";
 import EmployeeDropdown from "./EmployeeDropdown.vue";
 import EmployeeDialog from "./EmployeeDialog.vue";
-import AlertDialog from "./AlertDialog.vue";
 
 import moment from "moment";
 
+import PopUpWarning from "../popup/PopUpWarning";
 const employeeDefault = {
   address: null,
   bankAccountNumber: null,
@@ -161,7 +167,7 @@ export default {
     EmployeePagination,
     EmployeeDropdown,
     EmployeeDialog,
-    AlertDialog,
+    PopUpWarning,
   },
   data: () => ({
     /**
@@ -220,7 +226,7 @@ export default {
      * Thông tin nhân viên cần xóa.
      *  createdBy: NVDAT(11/05/2021)
      */
-    employeeDel: null,
+    employeeDel: employeeDefault,
 
     /**
      * Biến xác định trạng thái employee dialog.
@@ -232,9 +238,23 @@ export default {
      * Biến xác định trạng thái alert dialog.
      * CreatedBy: NVDAT (09/05/2021)
      */
-    isShowAlertDialog: false,
+    isShowConfirmDel: false,
+
     timeOut: null,
+    /**
+     * biếm lưu tạm của hàm checkALL
+     * createdBy: NVDAT(11/05/2021)
+     */
     employeesTemp: [],
+
+    requestStatus: {
+      isShowMessage: false,
+      message: "",
+    },
+    optionPopUpMessage: {
+      closeBtn: { isShow: true, label: "Đóng" },
+      okBtn: { isShow: false}
+    }
   }),
   filters: {
     formatDate: function (date) {
@@ -347,13 +367,23 @@ export default {
         reqConfig.url = `api/v1/Employees/${this.employeeModify.employeeId}`;
         // reqConfig.data = {id : this.employeeModify.employeeId};
       }
-
-      req(reqConfig).then((res) => {
-        if (res.status != 204) {
-          this.setStateEmployeeDialog(false);
-          this.fetchEmployees();
-        }
-      });
+      var _self = this;
+      req(reqConfig)
+        .then((res) => {
+          if (res.status != 204) {
+            this.setStateEmployeeDialog(false);
+            this.fetchEmployees();
+          }
+        })
+        .catch(function (error) {
+          _self.requestStatus.isShowMessage = true;
+          if (error.response && error.response.data.devMsg) {
+            _self.requestStatus.message = error.response.data.devMsg;
+          } else {
+            _self.requestStatus.message =
+              "Đã có lỗi xảy ra, vui lòng liên hệ quản trị viên!";
+          }
+        });
     },
     /**
      * Sự kiện thay đổi trang trong phân trang.
@@ -395,7 +425,6 @@ export default {
     setStateEmployeeDialog(state) {
       this.isShowEmployeeDialog = state;
     },
-
     showEmployeeDialog() {
       this.employeeModify = employeeDefault;
       req("api/v1/Employees/NewEmployeeCode")
@@ -436,7 +465,7 @@ export default {
      * CreatedBy: NVDAT (09/05/2021)
      */
     setStateAlertDialog(state) {
-      this.isShowAlertDialog = state;
+      this.isShowConfirmDel = state;
     },
     /**
      * Lấy dữ liệu bộ phận từ api.
@@ -487,6 +516,9 @@ export default {
         this.isCheckAll = false;
       }
     },
+    closeMesasge(){
+      this.requestStatus.isShowMessage = false;
+    }
   },
 };
 </script>

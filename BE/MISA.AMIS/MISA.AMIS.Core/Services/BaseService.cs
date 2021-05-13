@@ -99,7 +99,8 @@ namespace MISA.AMIS.Core.Services
                         var msgError = (requiredAttribute[0] as PropertyRequired).MsgErrorEmpty;
                         if (string.IsNullOrEmpty(msgError))
                         {
-                            msgError = $"{property.Name} không được phép để trống!";
+                            //msgError = $"{property.Name} không được phép để trống!";
+                            msgError = string.Format(Properties.ValidResources.MsgErrorRequired, property.Name);
                         }
                         throw new ClientException(msgError);
                     }
@@ -118,13 +119,14 @@ namespace MISA.AMIS.Core.Services
                         var msgError = (maxLengthAttribute[0] as PropertyMaxLength).MsgError_MaxLength;
                         if (string.IsNullOrEmpty(msgError))
                         {
-                            msgError = $"Độ dài của {property.Name} phải nhỏ hơn {maxLength}";
+                            //msgError = $"Độ dài của {property.Name} phải nhỏ hơn {maxLength}";
+                            msgError = string.Format(Properties.ValidResources.MsgErrorMaxLength,property.Name, maxLength);
                         }
                         throw new ClientException(msgError);
                     }
                 }
                 // Kiểm tra email
-                var emailAttribute = property.GetCustomAttributes(typeof(PropertyEmail), true);
+                /*var emailAttribute = property.GetCustomAttributes(typeof(PropertyEmail), true);
                 if (emailAttribute.Length > 0)
                 {
                     // Lấy giá trị email
@@ -141,7 +143,7 @@ namespace MISA.AMIS.Core.Services
                         }
                         throw new ClientException(msgErrorEmail);
                     }
-                }
+                }*/
             }
             CustomValidate(entity, http);
         }

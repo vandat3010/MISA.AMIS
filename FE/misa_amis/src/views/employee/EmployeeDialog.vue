@@ -87,7 +87,7 @@
                     class="input"
                     :value="
                       employee && employee.dateOfBirth
-                        ? formatYYYMMDD(employee.dateOfBirth)
+                        ? formatDateDDMMYYY(employee.dateOfBirth)
                         : null
                     "
                     @input="
@@ -112,8 +112,8 @@
                         id="male"
                         class="radio"
                         name="gender"
-                        :value="0"
-                        :checked="employee && employee.gender == 0"
+                        :value="1"
+                        :checked="employee && employee.gender == 1"
                         @input="
                           $emit('update:employee', {
                             ...employee,
@@ -122,7 +122,7 @@
                         "
                       />
                       <label for="male"></label>
-                      <label style="margin-left: 8px">Nữ</label>
+                      <label style="margin-left: 8px">Nam</label>
                     </div>
                     <div
                       class="flex-row-align-center"
@@ -133,8 +133,8 @@
                         id="female"
                         class="radio"
                         name="gender"
-                        :value="1"
-                        :checked="employee && employee.gender == 1"
+                        :value="0"
+                        :checked="employee && employee.gender == 0"
                         @input="
                           $emit('update:employee', {
                             ...employee,
@@ -143,7 +143,7 @@
                         "
                       />
                       <label for="female"></label>
-                      <label style="margin-left: 8px">Nam</label>
+                      <label style="margin-left: 8px">Nữ</label>
                     </div>
                     <div
                       class="flex-row-align-center"
@@ -240,7 +240,7 @@
                     class="input"
                     :value="
                       employee && employee.dateOfIN
-                        ? formatYYYMMDD(employee.dateOfIN)
+                        ? formatDateDDMMYYY(employee.dateOfIN)
                         : null
                     "
                     @input="
@@ -429,6 +429,8 @@
 
 <script>
 import dayjs from "dayjs";
+
+
 import { ModelListSelect } from "vue-search-select";
 export default {
   components: {
@@ -463,6 +465,15 @@ export default {
 
   data: () => ({
     errors: null,
+    /**
+     * thông tin nhân viên có mã trùng
+     */
+    employeePop: null,
+    /**
+     * Biến xác định trạng thái PopUp
+     * createdBy: NVDAT(12/05/2021)
+     */
+    ishowPoUp: false,
   }),
 
   methods: {
@@ -477,7 +488,7 @@ export default {
           }
         }
       }
-      this.$emit("onPositive");
+      this.$emit("onSave");
     },
 
     /**
@@ -492,8 +503,8 @@ export default {
      * Hàm format date về dạng YYYY-MM-DD
      * CreatedBy: NVDAT(10/05/2021)
      */
-    formatYYYMMDD(dateStr) {
-      return dateStr ? dayjs(dateStr).format("YYYY-MM-DD") : null;
+    formatDateDDMMYYY(dateStr) {
+      return dateStr ? dayjs(dateStr).format("DD/MM/YYYY") : "Không xác định";
     },
 
     /**
@@ -548,6 +559,13 @@ export default {
           employeeDepartmentId: null,
         };
       }
+    },
+    /**
+     * phương thức set trạng thái employee dialog
+     * @param {Boolean} state
+     */
+    setStatePopUp(state) {
+      this.ishowPoUp = state;
     },
   },
 };
