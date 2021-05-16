@@ -82,7 +82,7 @@
               <div class="col-5" style="padding-right: 16px">
                 <div>
                   <label class="label-input">Ngày sinh</label>
-                  <input
+                  <!-- <input
                     type="date"
                     class="input"
                     :value="
@@ -96,7 +96,8 @@
                         dateOfBirth: $event.target.value,
                       })
                     "
-                  />
+                  /> -->
+                  <datepicker v-model="employee.dateOfBirth" format="dd/MM/yyyy" id="date-input" placeholder="dd/mm/yyyy"/>
                 </div>
               </div>
               <div class="col-7">
@@ -235,7 +236,7 @@
               <div class="col-5">
                 <div>
                   <label class="label-input">Ngày cấp</label>
-                  <input
+                  <!-- <input
                     type="date"
                     class="input"
                     :value="
@@ -249,7 +250,8 @@
                         dateOfIN: $event.target.value,
                       })
                     "
-                  />
+                  /> -->
+                  <datepicker v-model="employee.dateOfIN" format="dd/MM/yyyy" id="date-input" placeholder="dd/mm/yyyy"/>
                 </div>
               </div>
             </div>
@@ -429,6 +431,7 @@
 
 <script>
 import dayjs from "dayjs";
+import datepicker from "vuejs-datepicker"
 
 
 import { ModelListSelect } from "vue-search-select";
@@ -436,6 +439,7 @@ import { ModelListSelect } from "vue-search-select";
 export default {
   components: {
     ModelListSelect,
+    datepicker
   },
   props: {
     /**

@@ -46,17 +46,17 @@
                     v-model="isCheckAll"
                   />
                 </th>
-                <th>MÃ NHÂN VIÊN</th>
-                <th>TÊN NHÂN VIÊN</th>
-                <th>GIỚI TÍNH</th>
-                <th>NGÀY SINH</th>
-                <th>SỐ CMND</th>
-                <th>CHỨC DANH</th>
-                <th>TÊN ĐƠN VỊ</th>
-                <th>SỐ TÀI KHOẢN</th>
-                <th>TÊN NGÂN HÀNG</th>
-                <th>CHI NHÁNH TK NGÂN HÀNG</th>
-                <th>CHỨC NĂNG</th>
+                <th style="min-width: 83.33%;">MÃ NHÂN VIÊN</th>
+                <th style="min-width: 83.33%;">TÊN NHÂN VIÊN</th>
+                <th style="min-width: 83.33%;">GIỚI TÍNH</th>
+                <th style="min-width: 83.33%;">NGÀY SINH</th>
+                <th style="min-width: 83.33%;">SỐ CMND</th>
+                <th style="min-width: 83.33%;">CHỨC DANH</th>
+                <th style="min-width: 83.33%;">TÊN ĐƠN VỊ</th>
+                <th style="min-width: 83.33%;">SỐ TÀI KHOẢN</th>
+                <th style="min-width: 83.33%;">TÊN NGÂN HÀNG</th>
+                <th style="min-width: 83.33%;">CHI NHÁNH TK NGÂN HÀNG</th>
+                <th style="min-width: 83.33%;">CHỨC NĂNG</th>
               </tr>
             </thead>
             <tbody>
@@ -328,7 +328,7 @@ export default {
         this.filter = value;
         this.pageIndex = 1;
         this.fetchEmployees();
-      }, 1000);
+      }, 1500);
     },
     /**
      * Phương thức click button refresh.

@@ -1,6 +1,7 @@
 <template>
     <div class="header">
-        <div class="left-header">
+        <div class="header-left">
+            <div class="icon icon-three-stripes"></div>
             <select class="select">
                 <option>CÔNG TY MISA</option>
             </select>

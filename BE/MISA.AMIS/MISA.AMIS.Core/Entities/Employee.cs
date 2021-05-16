@@ -80,7 +80,6 @@ namespace MISA.AMIS.Core.Entities
         /// Email
         /// </summary>
         
-        [PropertyRequired("")]
         [PropertyEmail("")]
         public string Email { get; set; }
         /// <summary>

@@ -308,9 +308,11 @@ body {
     overflow: hidden;
 
     .scroll {
-      padding: 0 16px;
+      margin: 0 16px;
       height: 100%;
       overflow: auto;
+      white-space: nowrap;
+      border: 1px solid #ccc;
     }
 
     .table-option {
@@ -432,7 +434,8 @@ body {
 }
 
 // input
-.input {
+.input,
+#date-input {
   height: 32px;
   outline: none;
   border: 1px solid #ccc;
@@ -590,7 +593,16 @@ body {
       th {
         background-color: #f4f5f6;
         position: sticky;
-        top: 0;
+        top: -1px;
+        border-top: none;
+      }
+      th:first-child {
+        z-index: 7;
+        left: -1px;
+      }
+      th:last-child {
+        z-index: 7;
+        right: 0;
       }
     }
   }
@@ -598,6 +610,16 @@ body {
   tbody {
     tr {
       height: 48px;
+      td:first-child {
+        position: sticky;
+        left: -1px;
+        background-color: white;
+      }
+      td:last-child {
+        position: sticky;
+        right: 0;
+        background-color: white;
+      }
     }
   }
 }
