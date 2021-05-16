@@ -46,17 +46,17 @@
                     v-model="isCheckAll"
                   />
                 </th>
-                <th style="min-width: 83.33%;">MÃ NHÂN VIÊN</th>
-                <th style="min-width: 83.33%;">TÊN NHÂN VIÊN</th>
-                <th style="min-width: 83.33%;">GIỚI TÍNH</th>
-                <th style="min-width: 83.33%;">NGÀY SINH</th>
-                <th style="min-width: 83.33%;">SỐ CMND</th>
-                <th style="min-width: 83.33%;">CHỨC DANH</th>
-                <th style="min-width: 83.33%;">TÊN ĐƠN VỊ</th>
-                <th style="min-width: 83.33%;">SỐ TÀI KHOẢN</th>
-                <th style="min-width: 83.33%;">TÊN NGÂN HÀNG</th>
-                <th style="min-width: 83.33%;">CHI NHÁNH TK NGÂN HÀNG</th>
-                <th style="min-width: 83.33%;">CHỨC NĂNG</th>
+                <th style="min-width: 83.33%">MÃ NHÂN VIÊN</th>
+                <th style="min-width: 83.33%">TÊN NHÂN VIÊN</th>
+                <th style="min-width: 83.33%">GIỚI TÍNH</th>
+                <th style="min-width: 83.33%">NGÀY SINH</th>
+                <th style="min-width: 83.33%">SỐ CMND</th>
+                <th style="min-width: 83.33%">CHỨC DANH</th>
+                <th style="min-width: 83.33%">TÊN ĐƠN VỊ</th>
+                <th style="min-width: 83.33%">SỐ TÀI KHOẢN</th>
+                <th style="min-width: 83.33%">TÊN NGÂN HÀNG</th>
+                <th style="min-width: 83.33%">CHI NHÁNH TK NGÂN HÀNG</th>
+                <th style="min-width: 83.33%">CHỨC NĂNG</th>
               </tr>
             </thead>
             <tbody>
@@ -109,6 +109,7 @@
       :departments="departments"
       @onClose="setStateEmployeeDialog(false)"
       @onSave="saveEmployee"
+      @onSaveReset="saveResetEmployee"
     />
 
     <PopUpWarning
@@ -380,44 +381,43 @@ export default {
           if (error.response && error.response.data.devMsg) {
             _self.requestStatus.message = error.response.data.devMsg;
           } else {
-            _self.requestStatus.message =
-              "Đã có lỗi xảy ra, vui lòng liên hệ quản trị viên!";
+            _self.requestStatus.message = "Lỗi nhập ngu!";
           }
         })
         .finally(() => {
           this.state = StateEnum.SUCCESS;
         });
-      // saveEmployee() {
-      //   this.state = StateEnum.LOADING;
-      //   var reqConfig = {
-      //     url: "api/v1/Employees",
-      //     method: "POST",
-      //     data: this.employeeModify,
-      //   };
-      //   if (this.employeeModify.employeeId) {
-      //     // update
-
-      //     reqConfig.method = "PUT";
-      //     reqConfig.url = `api/v1/Employees/${this.employeeModify.employeeId}`;
-      //     // reqConfig.data = {id : this.employeeModify.employeeId};
-      //   }
-      // var _self = this;
-      // req(reqConfig)
-      //   .then((res) => {
-      //     if (res.status != 204) {
-      //       this.setStateEmployeeDialog(false);
-      //       this.fetchEmployees();
-      //     }
-      //   })
-      //   .catch(function (error) {
-      //     _self.requestStatus.isShowMessage = true;
-      //     if (error.response && error.response.data.devMsg) {
-      //       _self.requestStatus.message = error.response.data.devMsg;
-      //     } else {
-      //       _self.requestStatus.message =
-      //         "Đã có lỗi xảy ra, vui lòng liên hệ quản trị viên!";
-      //     }
-      //   });
+    },
+    /**
+     * lưu thông tin nhân viên và reset lại from\
+     * CreatedBy: NVDAT(16/05/2020)
+     */
+    saveResetEmployee() {
+      this.state = StateEnum.LOADING;
+      this.employeeCodeExists = null;
+      var reqConfig = {
+        url: "api/v1/Employees",
+        method: "POST",
+        data: this.employeeModify,
+      };
+      var _self = this;
+      req(reqConfig)
+        .then((res) => {
+          if (res.status != 204) {
+            this.showEmployeeDialog();
+            this.fetchEmployees();
+            this.employeeModify = employeeDefault;
+          }
+        })
+        .catch(function (error) {
+          _self.requestStatus.isShowMessage = true;
+          if (error.response && error.response.data.devMsg) {
+            _self.requestStatus.message = error.response.data.devMsg;
+          }
+        })
+        .finally(() => {
+          this.state = StateEnum.SUCCESS;
+        });
     },
     /**
      * Sự kiện thay đổi trang trong phân trang.

@@ -59,6 +59,7 @@ export default {
   box-sizing: border-box;
   font-family: inherit;
   font-size: inherit;
+  border: 0;
 }
 
 html,
@@ -69,6 +70,8 @@ body {
   font-family: NotoSans;
   overflow-y: auto;
   scroll-behavior: smooth;
+  min-width: 1024px;
+  min-height: 768px;
 }
 
 /* width */
@@ -119,6 +122,7 @@ body {
     .icon-bind(-843px -30px);
     margin-left: 10px;
     cursor: pointer;
+    margin-right: 16px;
   }
 
   &.icon-chevron-down {

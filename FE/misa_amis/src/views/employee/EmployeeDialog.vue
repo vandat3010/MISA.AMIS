@@ -42,7 +42,7 @@
                         employeeCode: $event.target.value,
                       })
                     "
-                    @blur.prevent="validEmployeeCode"
+                    @blur.prevent="validEmtity($event, 'employeeCode', 'mã nhân viên')"
                   />
                   <span
                     v-if="errors && errors.employeeCode"
@@ -206,6 +206,7 @@
                 option-value="departmentId"
                 option-text="departmentName"
                 placeholder="chọn phòng ban"
+                @blur.prevent="validEmtity($event, 'departmentId', 'Tên Đơn vị')"
               >
               </model-list-select>
               <span v-if="errors && errors.departmentId" class="text-error">{{
@@ -420,7 +421,7 @@
           <button class="btn btn-secondary" @click.prevent="onClickSave">
             Cất
           </button>
-          <button class="btn btn-primary" style="margin-left: 8px">
+          <button class="btn btn-primary" style="margin-left: 8px" @click.prevent="OnClickSaveAndReset">
             Cất và thêm
           </button>
         </div>
@@ -484,6 +485,7 @@ export default {
   methods: {
     /**
      * Phương thức click lưu thông tin nhân viên.
+     * CreatedBy: NVDAT(11/05/2021)
      */
     onClickSave() {
       if (this.errors) {
@@ -495,7 +497,20 @@ export default {
       }
       this.$emit("onSave");
     },
-
+    /**
+     * Phương thức click lưu thông tin và Reset lại from
+     * CreatedBy: NVDAT(16/05/2021)
+     */
+    OnClickSaveAndReset(){
+      if (this.errors) {
+        for (let err in this.errors) {
+          if (this.errors[err]) {
+            return;
+          }
+        }
+      }
+      this.$emit("onSaveReset");
+    },
     /**
      * Phương thức đóng dialog
      * CreatedBy: NVDAT(10/05/2021)
@@ -511,6 +526,29 @@ export default {
     formatYYYMMDD(dateStr) {
       return dateStr ? dayjs(dateStr).format("YYYY-MM-DD") : null;
     },
+
+    validEmtity(e, propertyName, entityName ){
+      debugger;
+      let val = e.target.value;
+      if (!val) {
+        let temp = entityName.toLowerCase();
+        const formatName = temp.charAt(0).toUpperCase() + temp.slice(1);
+
+        this.errors[propertyName] = `${formatName} không được để trống.`;
+        // this.errors = {
+        //   ...this.errors,
+        //   employeeCode: `${} không được để trống.`,
+        // };
+      } else {
+        this.errors[propertyName] = null;
+
+        // this.errors = {
+        //   ...this.errors,
+        //   employeeCode: null,
+        // };
+      }
+    },
+
 
     /**
      * valid mã nhân viên

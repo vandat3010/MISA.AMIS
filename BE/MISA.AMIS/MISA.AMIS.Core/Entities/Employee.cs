@@ -35,7 +35,7 @@ namespace MISA.AMIS.Core.Entities
         /// <summary>
         /// Ngày sinh
         /// </summary>
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         /// <summary>
         /// giới tính
@@ -45,6 +45,7 @@ namespace MISA.AMIS.Core.Entities
         /// <summary>
         /// ID bộ phận, phòng ban
         /// </summary>
+        [PropertyRequired("")]
         public Guid? DepartmentId { get; set; }
 
         /// <summary>
@@ -80,7 +81,6 @@ namespace MISA.AMIS.Core.Entities
         /// Email
         /// </summary>
         
-        [PropertyEmail("")]
         public string Email { get; set; }
         /// <summary>
         /// số tài khoản
