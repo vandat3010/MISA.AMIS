@@ -141,7 +141,7 @@ namespace MISA.AMIS.Core.Services
             }
 
 
-            //Check trùng IDentifyNumber
+            /*//Check trùng IDentifyNumber
             // Khởi tạo giá trị
             var identifyNumber = entity.IdentifyNumber;
             var checkIdentifyNumberExist = _employeeRepository.CheckEmployeeAttributeExist("IdentifyNumber", employeeId, http, identifyNumber);
@@ -159,7 +159,7 @@ namespace MISA.AMIS.Core.Services
             if (checkphoneNumberExist)
             {
                 throw new ClientException(Properties.ValidResources.Msg_Phone_Exist);
-            }
+            }*/
         }
     }
 }

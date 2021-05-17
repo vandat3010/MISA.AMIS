@@ -101,7 +101,7 @@
                   <EmployeeDropdown
                     @onClickBtnEdit="onClickBtnEditEmployee(e.employeeId)"
                     @onClickBtnDel="onClickBtnDelEmployee(e)"
-                    @onClickBtnDouble="onClickBtnDouble(e.employeeId)"
+                    @onClickBtnReplicate="onClickBtnReplicate(e.employeeId)"
                   />
                 </td>
                 </tr>
@@ -180,8 +180,7 @@ const employeeDefault = {
   phoneNumber: null,
   placeOfIN: null,
   positionName: null,
-  telephoneNumber: null,
-  employeeId:null
+  telephoneNumber: null
 };
 export default {
   components: {
@@ -276,6 +275,12 @@ export default {
       message: "",
     },
     /**
+     * biến gán cho nhân bản data
+     * createdBy: NVDAT(17/05/2021)
+     */
+    employeeReplicate: employeeDefault,
+    
+    /**
      *các button trên popUp
      *CreatedBy: NVDAT(15/05/2021)
      */
@@ -283,7 +288,6 @@ export default {
       closeBtn: { isShow: true, label: "Đóng" },
       okBtn: { isShow: false },
     },
-    recordCode: "",
   }),
   filters: {
     formatDate: function (date) {
@@ -396,7 +400,7 @@ export default {
           if (error.response && error.response.data.devMsg) {
             _self.requestStatus.message = error.response.data.devMsg;
           } else {
-            _self.requestStatus.message = "Lỗi nhập ngu!";
+            _self.requestStatus.message = "Có lỗi xảy ra vui lòng liên hệ MISA!";
           }
         })
         .finally(() => {
@@ -479,14 +483,15 @@ export default {
     setStateEmployeeDialog(state) {
       this.isShowEmployeeDialog = state;
     },
-    showEmployeeDialog() {
-      this.employeeModify = employeeDefault;
+    showEmployeeDialog(isClearData = true) {
+      if(isClearData){
+        this.employeeModify = employeeDefault;
+      }
       req("api/v1/Employees/NewEmployeeCode")
         .then((res) => res.data)
         .then((data) => {
           this.employeeModify.employeeCode = data;
           this.setStateEmployeeDialog(true);
-          this.recordCode = data;
         });
       this.fetchDepartment();
     },
@@ -508,16 +513,14 @@ export default {
      * Phương thức click button nhân bản nhân viên
      * CreatedBy: NVDAT(17/05/2021)
      */
-    onClickBtnDouble(employeeModify){
-      this.employeeCodeExists = null;
-      this.showEmployeeDialog();
-      this.setStateEmployeeDialog(true);
-      req("api/v1/Employees/" + employeeModify)
-        .then((res) => res.data)
-        .then((data) => {
-          this.employeeModify = data;
+    onClickBtnReplicate(employeeId){
+      req(`api/v1/Employees/${employeeId}`)
+        .then((res) => {
+          this.employeeModify = res.data;
+          delete this.employeeModify.employeeId;
+          this.showEmployeeDialog(false);
         });
-      this.fetchDepartment();
+        
     },
 
     /**
@@ -564,6 +567,11 @@ export default {
       }
       return "";
     },
+
+    /**
+     * chọn tất cả
+     * CreatedBy(11/05/2021)
+     */
     checkAll() {
       this.isCheckAll = !this.isCheckAll;
       this.employeesTemp = [];
@@ -574,6 +582,11 @@ export default {
         });
       }
     },
+
+    /**
+     * chọn hết các bản ghi tren cùng 1 trang thì sẽ hiện chọn tất cả
+     * CreatedBy(11/05/2021)
+     */
     updateCheck(event, employeeCode) {
       if (!event.target.checked) {
         delete this.employeesTemp[employeeCode];
