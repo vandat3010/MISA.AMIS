@@ -6,7 +6,7 @@
         <button class="btn icon icon-chevron-down-blue"></button>
       </div>
       <div class="dropdown-content right" :class="{ hide: !isShow }">
-        <div class="dropdown-item">Nhân bản</div>
+        <div class="dropdown-item" @click.prevent="onClickDouble">Nhân bản</div>
         <div class="dropdown-item" @click.prevent="onClickBtnDel">Xóa</div>
         <div class="dropdown-item">Ngưng sử dụng</div>
       </div>
@@ -50,7 +50,14 @@ export default {
     onClickBtnEdit() {
       this.$emit("onClickBtnEdit");
     },
-
+    /**
+     * click button nhân bản.
+     * CreatedBy: NVDAT(17/05/2021)
+     */
+    onClickDouble(){
+      this.toggleDropdown();
+      this.$emit("onClickBtnDouble")
+    },
     /**
      * Click button xóa.
      * CreatedBy: NVDAT(10/05/2021)

@@ -316,7 +316,7 @@ body {
       height: 100%;
       overflow: auto;
       white-space: nowrap;
-      border: 1px solid #ccc;
+      display: flex;
     }
 
     .table-option {
@@ -604,10 +604,10 @@ body {
         z-index: 7;
         left: -1px;
       }
-      th:last-child {
-        z-index: 7;
-        right: 0;
-      }
+      // th:last-child {
+      //   z-index: 7;
+      //   right: 0;
+      // }
     }
   }
 
@@ -619,15 +619,52 @@ body {
         left: -1px;
         background-color: white;
       }
-      td:last-child {
-        position: sticky;
-        right: 0;
-        background-color: white;
-      }
+      // td:last-child {
+      //   position: sticky;
+      //   right: 0;
+      //   background-color: white;
+      // }
     }
   }
 }
+//table 1
+ .table1{
+   width: 20%;
+  border-collapse: collapse;
 
+  th,
+  td {
+    border: 1px solid #ccc;
+    text-align: left;
+    padding: 0 16px;
+  }
+
+  thead {
+    tr {
+      height: 32px;
+      th {
+        background-color: #f4f5f6;
+        position: sticky;
+        top: -1px;
+        border-top: none;
+      }
+      th:first-child {
+        z-index: 7;
+        left: -1px;
+      }
+      // th:last-child {
+      //   z-index: 7;
+      //   right: 0;
+      // }
+    }
+  }
+
+  tbody {
+    tr {
+      height: 48px;
+  }
+ }
+ }
 // dialog
 .dialog {
   position: fixed;

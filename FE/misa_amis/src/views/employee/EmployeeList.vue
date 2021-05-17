@@ -46,21 +46,21 @@
                     v-model="isCheckAll"
                   />
                 </th>
-                <th style="min-width: 83.33%">MÃ NHÂN VIÊN</th>
-                <th style="min-width: 83.33%">TÊN NHÂN VIÊN</th>
-                <th style="min-width: 83.33%">GIỚI TÍNH</th>
-                <th style="min-width: 83.33%">NGÀY SINH</th>
-                <th style="min-width: 83.33%">SỐ CMND</th>
-                <th style="min-width: 83.33%">CHỨC DANH</th>
-                <th style="min-width: 83.33%">TÊN ĐƠN VỊ</th>
-                <th style="min-width: 83.33%">SỐ TÀI KHOẢN</th>
-                <th style="min-width: 83.33%">TÊN NGÂN HÀNG</th>
-                <th style="min-width: 83.33%">CHI NHÁNH TK NGÂN HÀNG</th>
-                <th style="min-width: 83.33%">CHỨC NĂNG</th>
+                <th style="min-width: 150px">MÃ NHÂN VIÊN</th>
+                <th style="min-width: 200px">TÊN NHÂN VIÊN</th>
+                <th style="min-width: 100px">GIỚI TÍNH</th>
+                <th style="min-width: 150px">NGÀY SINH</th>
+                <th style="min-width: 150px">SỐ CMND</th>
+                <th style="min-width: 150px">CHỨC DANH</th>
+                <th style="min-width: 200px">TÊN ĐƠN VỊ</th>
+                <th style="min-width: 150pxpx">SỐ TÀI KHOẢN</th>
+                <th style="min-width: 100pxpx">TÊN NGÂN HÀNG</th>
+                <th style="min-width: 100px">CHI NHÁNH TK NGÂN HÀNG</th>
+                <!-- <th style="min-width: 83.33%">CHỨC NĂNG</th> -->
               </tr>
             </thead>
             <tbody>
-              <tr v-for="e in employees" :key="e.employeeId">
+              <tr v-for="(e, index) in employees" :key="index">
                 <td>
                   <input
                     type="checkbox"
@@ -80,13 +80,31 @@
                 <td>{{ e.bankAccountNumber }}</td>
                 <td>{{ e.bankName }}</td>
                 <td>{{ e.bankBranchName }}</td>
-                <td>
+                <!-- <td>
                   <EmployeeDropdown
                     @onClickBtnEdit="onClickBtnEditEmployee(e.employeeId)"
                     @onClickBtnDel="onClickBtnDelEmployee(e)"
                   />
-                </td>
+                </td> -->
               </tr>
+            </tbody>
+          </table >
+          <table class="table1" style="position: sticky; z-index=2; top:0; right: 0; boder:0;">
+            <thead>
+              <tr style="border-top: 0px solid #ccc;">
+              <th style="min-width: 100px; postion: sticky; top:0;background-color: #f4f5f6">CHỨC NĂNG</th>
+              </tr>
+            </thead>
+            <tbody style="background-color: white ">
+                <tr v-for="e in employees" :key="e.employeeId"  style="background: white border: 1px solid #ccc;">
+                  <td>
+                  <EmployeeDropdown
+                    @onClickBtnEdit="onClickBtnEditEmployee(e.employeeId)"
+                    @onClickBtnDel="onClickBtnDelEmployee(e)"
+                    @onClickBtnDouble="onClickBtnDouble(e.employeeId)"
+                  />
+                </td>
+                </tr>
             </tbody>
           </table>
         </div>
@@ -163,6 +181,7 @@ const employeeDefault = {
   placeOfIN: null,
   positionName: null,
   telephoneNumber: null,
+  employeeId:null
 };
 export default {
   components: {
@@ -248,15 +267,23 @@ export default {
      * createdBy: NVDAT(11/05/2021)
      */
     employeesTemp: [],
-
+    /**
+     *cảnh báo khi nhập sai
+     *CreatedBy: NVDAT(11/05/2021)
+     */
     requestStatus: {
       isShowMessage: false,
       message: "",
     },
+    /**
+     *các button trên popUp
+     *CreatedBy: NVDAT(15/05/2021)
+     */
     optionPopUpMessage: {
       closeBtn: { isShow: true, label: "Đóng" },
       okBtn: { isShow: false },
     },
+    recordCode: "",
   }),
   filters: {
     formatDate: function (date) {
@@ -264,18 +291,6 @@ export default {
         return moment(String(date)).format("DD/MM/YYYY");
       }
     },
-    // getDepartmentName: function (departmentId) {
-    //   console.log("this.departments", this);
-    //   if (!departmentId || !this.departments || this.departments.length <=0 ){
-    //     return "";
-    //   }
-    //   console.log("this.departments", this.departments);
-    //   const depm = this.departments.find(p => p.departmentId === departmentId);
-    //   if(depm){
-    //     return depm.departmentName;
-    //   }
-    //   return "";
-    // },
   },
   computed: {
     isLoading: function () {
@@ -389,7 +404,7 @@ export default {
         });
     },
     /**
-     * lưu thông tin nhân viên và reset lại from\
+     * lưu thông tin nhân viên và reset lại from
      * CreatedBy: NVDAT(16/05/2020)
      */
     saveResetEmployee() {
@@ -400,6 +415,11 @@ export default {
         method: "POST",
         data: this.employeeModify,
       };
+      if (this.employeeModify.employeeId) {
+        // update
+        reqConfig.method = "PUT";
+        reqConfig.url = `api/v1/Employees/${this.employeeModify.employeeId}`;
+      }
       var _self = this;
       req(reqConfig)
         .then((res) => {
@@ -466,6 +486,7 @@ export default {
         .then((data) => {
           this.employeeModify.employeeCode = data;
           this.setStateEmployeeDialog(true);
+          this.recordCode = data;
         });
       this.fetchDepartment();
     },
@@ -477,6 +498,21 @@ export default {
       this.employeeModify = employeeDefault;
       this.setStateEmployeeDialog(true);
       req(`api/v1/Employees/${employeeId}`)
+        .then((res) => res.data)
+        .then((data) => {
+          this.employeeModify = data;
+        });
+      this.fetchDepartment();
+    },
+    /**
+     * Phương thức click button nhân bản nhân viên
+     * CreatedBy: NVDAT(17/05/2021)
+     */
+    onClickBtnDouble(employeeModify){
+      this.employeeCodeExists = null;
+      this.showEmployeeDialog();
+      this.setStateEmployeeDialog(true);
+      req("api/v1/Employees/" + employeeModify)
         .then((res) => res.data)
         .then((data) => {
           this.employeeModify = data;
