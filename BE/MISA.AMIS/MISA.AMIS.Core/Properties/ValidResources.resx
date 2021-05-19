@@ -127,7 +127,7 @@
     <value>{0} không được phép để trống</value>
   </data>
   <data name="Msg_Code_Exist" xml:space="preserve">
-    <value>Mã nhân viên đã tồn tại trên hệ thống!</value>
+    <value>Mã nhân viên đã tồn tại trên hệ thống, vui lòng kiểm tra lại!</value>
   </data>
   <data name="Msg_IdentifyNumber_Exist" xml:space="preserve">
     <value>Số chứng minh thư đã tồn tại trên hệ thống!</value>

@@ -526,9 +526,11 @@ export default {
     formatYYYMMDD(dateStr) {
       return dateStr ? dayjs(dateStr).format("YYYY-MM-DD") : null;
     },
-
+    /**
+     * Hàm validate Chung
+     * CreatedBy: Nv Dat(17/05/2021)
+     */
     validEmtity(e, propertyName, entityName ){
-      debugger;
       let val = e.target.value;
       if (!val) {
         let temp = entityName.toLowerCase();

@@ -170,6 +170,9 @@ body {
   &.icon-error {
     .icon-bind(-746px -456px, 48px);
   }
+  &.icon-change {
+    .icon-bind(-826px -456px, 48px);
+  }
 }
 
 // Navbar

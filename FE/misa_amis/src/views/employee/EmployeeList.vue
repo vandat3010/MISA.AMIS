@@ -46,14 +46,14 @@
                     v-model="isCheckAll"
                   />
                 </th>
-                <th style="min-width: 150px">MÃ NHÂN VIÊN</th>
+                <th style="min-width: 100px">MÃ NHÂN VIÊN</th>
                 <th style="min-width: 200px">TÊN NHÂN VIÊN</th>
-                <th style="min-width: 100px">GIỚI TÍNH</th>
-                <th style="min-width: 150px">NGÀY SINH</th>
-                <th style="min-width: 150px">SỐ CMND</th>
-                <th style="min-width: 150px">CHỨC DANH</th>
-                <th style="min-width: 200px">TÊN ĐƠN VỊ</th>
-                <th style="min-width: 150pxpx">SỐ TÀI KHOẢN</th>
+                <th style="min-width: 50px">GIỚI TÍNH</th>
+                <th style="min-width: 110px">NGÀY SINH</th>
+                <th style="min-width: 100px">SỐ CMND</th>
+                <th style="min-width: 100px">CHỨC DANH</th>
+                <th style="min-width: 150px">TÊN ĐƠN VỊ</th>
+                <th style="min-width: 100pxpx">SỐ TÀI KHOẢN</th>
                 <th style="min-width: 100pxpx">TÊN NGÂN HÀNG</th>
                 <th style="min-width: 100px">CHI NHÁNH TK NGÂN HÀNG</th>
                 <!-- <th style="min-width: 83.33%">CHỨC NĂNG</th> -->
@@ -125,14 +125,14 @@
       :isShow="isShowEmployeeDialog"
       :employee.sync="employeeModify"
       :departments="departments"
-      @onClose="setStateEmployeeDialog(false)"
+      @onClose="closeDialog"
       @onSave="saveEmployee"
       @onSaveReset="saveResetEmployee"
     />
 
     <PopUpWarning
       :isShow="isShowConfirmDel"
-      :message="`Bạn có thực sự muốn xóa nhân viên ${employeeDel.employeeCode} không?`"
+      :message="`Bạn có chắc chắn muốn xóa nhân viên ${employeeDel.employeeCode} không?`"
       @onOk="delEmployee"
       @onClose="setStateAlertDialog(false)"
     />
@@ -142,6 +142,12 @@
       :closeBtn="optionPopUpMessage.closeBtn"
       :okBtn="optionPopUpMessage.okBtn"
       @onClose="closeMesasge"
+    />
+    <PopUpChange
+    :isShow="isShowPopUpChange"
+    @onClose="onCloseChange"
+    @onCancel="cancelEmployee"
+    @onOK="onChangeSave"
     />
   </div>
 </template>
@@ -158,6 +164,7 @@ import EmployeeDialog from "./EmployeeDialog.vue";
 import moment from "moment";
 
 import PopUpWarning from "../popup/PopUpWarning";
+import PopUpChange from '../popup/PopUpChange.vue';
 const employeeDefault = {
   address: null,
   bankAccountNumber: null,
@@ -188,6 +195,7 @@ export default {
     EmployeeDropdown,
     EmployeeDialog,
     PopUpWarning,
+    PopUpChange
   },
   data: () => ({
     /**
@@ -259,6 +267,11 @@ export default {
      * CreatedBy: NVDAT (09/05/2021)
      */
     isShowConfirmDel: false,
+    /**
+     * Biến xác định trạng thái Change popup.
+     * CreatedBy: NVDAT (09/05/2021)
+     */
+    isShowPopUpChange:false,
 
     timeOut: null,
     /**
@@ -285,9 +298,14 @@ export default {
      *CreatedBy: NVDAT(15/05/2021)
      */
     optionPopUpMessage: {
-      closeBtn: { isShow: true, label: "Đóng" },
+      closeBtn: { isShow: true, label: "Đồng ý" },
       okBtn: { isShow: false },
     },
+    /**
+     * biến lưu tạm khi getById
+     * CreatedBy: NVDAT(15/05/2021)
+     */
+    employeeTemp: employeeDefault,
   }),
   filters: {
     formatDate: function (date) {
@@ -541,6 +559,14 @@ export default {
       this.isShowConfirmDel = state;
     },
     /**
+     * Phương thức set trạng thái Change popup
+     * @param {Boolean} state
+     * CreatedBy: NVDAT (09/05/2021)
+     */
+    setStateEmployeeChange(state) {
+      this.isShowPopUpChange = state;
+    },
+    /**
      * Lấy dữ liệu bộ phận từ api.
      * CreatedBy: NVDAT(10/05/2021)
      */
@@ -599,9 +625,28 @@ export default {
         this.isCheckAll = false;
       }
     },
+
     closeMesasge() {
       this.requestStatus.isShowMessage = false;
     },
-  },
+    onCloseChange(){
+      this.setStateEmployeeChange(false);
+      this.setStateEmployeeDialog(false);
+    },
+    cancelEmployee() {
+       this.setStateEmployeeChange(false);
+       this.setStateEmployeeDialog(true);
+    },
+    onChangeSave(){
+      this.setStateEmployeeChange(false);
+      this.saveEmployee();
+    },
+    closeDialog(){
+      // check data is change
+       if(employeeDefault){ 
+         this.setStateEmployeeChange(true);
+       }
+    }
+  }
 };
 </script>
