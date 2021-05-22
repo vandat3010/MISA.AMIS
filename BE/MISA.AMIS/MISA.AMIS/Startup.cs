@@ -48,8 +48,8 @@ namespace MISA.AMIS
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "MISA CukCuk API",
-                    Description = "MISA CukCuk API cung cấp các phương thức thêm, sửa, xóa và các tính năng khác.",
+                    Title = "MISA AMIS API",
+                    Description = "MISA AMIS API cung cấp các phương thức thêm, sửa, xóa và các tính năng khác.",
                     TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact
                     {
@@ -64,6 +64,10 @@ namespace MISA.AMIS
                     }
                 });
 
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();

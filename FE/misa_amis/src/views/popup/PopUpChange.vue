@@ -12,17 +12,19 @@
       </div>
       <div class="dialog-footer">
         <div class="dialog-footer-left">
-            <button class="btn btn-secondary" @click.prevent="onCancel">
+          <button class="btn btn-secondary" @click.prevent="onCancel">
             Hủy
           </button>
         </div>
         <div class="dialog-footer-right">
-            <button class="btn btn-secondary" @click.prevent="closeDialog" style="margin-right:12px">
+          <button
+            class="btn btn-secondary"
+            @click.prevent="closeDialog"
+            style="margin-right: 12px"
+          >
             Không
           </button>
-          <button class="btn btn-primary" @click.prevent="onOk">
-            Có
-          </button>
+          <button class="btn btn-primary" @click.prevent="onOk">Có</button>
         </div>
       </div>
     </div>
@@ -31,6 +33,7 @@
 
 <script>
 export default {
+  //#region prop
   props: {
     /**
      * Prop xác định trạng thái dialog.
@@ -49,6 +52,9 @@ export default {
       default: null,
     },
   },
+  //#endregion
+
+  //#region method
   methods: {
     /**
      * Phương thức đóng dialog.
@@ -57,12 +63,13 @@ export default {
     closeDialog() {
       this.$emit("onClose");
     },
-    onCancel(){
-        this.$emit("onCancel");
+    onCancel() {
+      this.$emit("onCancel");
     },
-    onOk(){
+    onOk() {
       this.$emit("onOK");
-    }
+    },
   },
+  //#endregion
 };
 </script>

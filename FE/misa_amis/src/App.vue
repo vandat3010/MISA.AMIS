@@ -173,6 +173,9 @@ body {
   &.icon-change {
     .icon-bind(-826px -456px, 48px);
   }
+  &.icon-calendar {
+    .icon-bind(-128px -306px, 30px);
+  }
 }
 
 // Navbar
@@ -408,7 +411,7 @@ body {
 
 // button.
 .btn {
-  height: 40px;
+  height: 45px;
   padding-left: 24px;
   padding-right: 24px;
   line-height: 40px;

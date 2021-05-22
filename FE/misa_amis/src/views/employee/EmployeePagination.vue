@@ -13,6 +13,7 @@
         <option value="30">30 bản ghi trên trang</option>
         <option value="50">50 bản ghi trên trang</option>
         <option value="100">100 bản ghi trên trang</option>
+        <option value="200">200 bản ghi trên trang</option>
       </select>
       <div class="pager">
         <div
@@ -67,6 +68,7 @@
 
 <script>
 export default {
+  //#region props
   props: {
     /**
      *  tổng số trang.
@@ -95,7 +97,9 @@ export default {
       default: 1,
     },
   },
+  //#endregion
 
+  //#region computed
   computed: {
     pageIndexs: function () {
       let ps = [];
@@ -108,5 +112,6 @@ export default {
       return ps;
     },
   },
+  //#endregion
 };
 </script>

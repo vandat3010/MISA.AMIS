@@ -4,13 +4,11 @@ import EmployeeList from '../views/employee/EmployeeList.vue';
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'employee',
-    component: EmployeeList
-  },
-]
+const routes = [{
+  path: '/',
+  name: 'employee',
+  component: EmployeeList
+}, ]
 
 const router = new VueRouter({
   mode: 'history',

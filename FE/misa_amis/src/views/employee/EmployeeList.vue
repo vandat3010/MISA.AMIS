@@ -39,7 +39,7 @@
           <table class="table">
             <thead>
               <tr>
-                <th>
+                <th style="border-left: 0; width: 40px;">
                   <input
                     type="checkbox"
                     @click="checkAll()"
@@ -61,7 +61,7 @@
             </thead>
             <tbody>
               <tr v-for="(e, index) in employees" :key="index">
-                <td>
+                <td style="border-left: 0">
                   <input
                     type="checkbox"
                     :id="e.employeeCode"
@@ -88,23 +88,40 @@
                 </td> -->
               </tr>
             </tbody>
-          </table >
-          <table class="table1" style="position: sticky; z-index=2; top:0; right: 0; boder:0;">
+          </table>
+          <table
+            class="table1"
+            style="position: sticky; z-index=2; top:0; right: 0; boder:0;"
+          >
             <thead>
-              <tr style="border-top: 0px solid #ccc;">
-              <th style="min-width: 100px; postion: sticky; top:0;background-color: #f4f5f6">CHỨC NĂNG</th>
+              <tr style="border-top: 0px solid #ccc">
+                <th
+                  style="
+                    min-width: 100px;
+                    postion: sticky;
+                    top: 0;
+                    background-color: #f4f5f6;
+                    border-right: 0;
+                  "
+                >
+                  CHỨC NĂNG
+                </th>
               </tr>
             </thead>
-            <tbody style="background-color: white ">
-                <tr v-for="e in employees" :key="e.employeeId"  style="background: white border: 1px solid #ccc;">
-                  <td>
+            <tbody style="background-color: white">
+              <tr
+                v-for="e in employees"
+                :key="e.employeeId"
+                style="background: white border: 1px solid #ccc;"
+              >
+                <td style="border-right: 0">
                   <EmployeeDropdown
                     @onClickBtnEdit="onClickBtnEditEmployee(e.employeeId)"
                     @onClickBtnDel="onClickBtnDelEmployee(e)"
                     @onClickBtnReplicate="onClickBtnReplicate(e.employeeId)"
                   />
                 </td>
-                </tr>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -144,10 +161,10 @@
       @onClose="closeMesasge"
     />
     <PopUpChange
-    :isShow="isShowPopUpChange"
-    @onClose="onCloseChange"
-    @onCancel="cancelEmployee"
-    @onOK="onChangeSave"
+      :isShow="isShowPopUpChange"
+      @onClose="onCloseChange"
+      @onCancel="cancelEmployee"
+      @onOK="onChangeSave"
     />
   </div>
 </template>
@@ -164,7 +181,12 @@ import EmployeeDialog from "./EmployeeDialog.vue";
 import moment from "moment";
 
 import PopUpWarning from "../popup/PopUpWarning";
-import PopUpChange from '../popup/PopUpChange.vue';
+import PopUpChange from "../popup/PopUpChange.vue";
+
+/**
+ *các property mặc định cảu nhân viên
+ *CreatedBy: Nvdat(16/05/2021)
+ */
 const employeeDefault = {
   address: null,
   bankAccountNumber: null,
@@ -187,7 +209,7 @@ const employeeDefault = {
   phoneNumber: null,
   placeOfIN: null,
   positionName: null,
-  telephoneNumber: null
+  telephoneNumber: null,
 };
 export default {
   components: {
@@ -195,8 +217,9 @@ export default {
     EmployeeDropdown,
     EmployeeDialog,
     PopUpWarning,
-    PopUpChange
+    PopUpChange,
   },
+  //#region Data
   data: () => ({
     /**
      * biến xác định check tất cả bản ghi hay không
@@ -271,7 +294,7 @@ export default {
      * Biến xác định trạng thái Change popup.
      * CreatedBy: NVDAT (09/05/2021)
      */
-    isShowPopUpChange:false,
+    isShowPopUpChange: false,
 
     timeOut: null,
     /**
@@ -292,7 +315,7 @@ export default {
      * createdBy: NVDAT(17/05/2021)
      */
     employeeReplicate: employeeDefault,
-    
+
     /**
      *các button trên popUp
      *CreatedBy: NVDAT(15/05/2021)
@@ -307,6 +330,10 @@ export default {
      */
     employeeTemp: employeeDefault,
   }),
+
+  //#endregion
+
+  //#region filter
   filters: {
     formatDate: function (date) {
       if (date) {
@@ -314,6 +341,9 @@ export default {
       }
     },
   },
+  //#endregion
+
+  //#region Computed
   computed: {
     isLoading: function () {
       return this.state == StateEnum.LOADING;
@@ -322,13 +352,21 @@ export default {
       return this.state == StateEnum.ERROR;
     },
   },
+  //#endregion
+
+  //#region  Created
   created() {
     this.fetchEmployees();
     this.fetchDepartment();
   },
+  //#endregion
+
+  //#region  mounted
   mounted() {
     this.fetchEmployees();
   },
+  //#endregion
+  //#region  Method
   methods: {
     /**
      * Lấy dữ liệu từ api.
@@ -418,7 +456,8 @@ export default {
           if (error.response && error.response.data.devMsg) {
             _self.requestStatus.message = error.response.data.devMsg;
           } else {
-            _self.requestStatus.message = "Có lỗi xảy ra vui lòng liên hệ MISA!";
+            _self.requestStatus.message =
+              "Có lỗi xảy ra vui lòng liên hệ MISA!";
           }
         })
         .finally(() => {
@@ -502,7 +541,7 @@ export default {
       this.isShowEmployeeDialog = state;
     },
     showEmployeeDialog(isClearData = true) {
-      if(isClearData){
+      if (isClearData) {
         this.employeeModify = employeeDefault;
       }
       req("api/v1/Employees/NewEmployeeCode")
@@ -531,14 +570,12 @@ export default {
      * Phương thức click button nhân bản nhân viên
      * CreatedBy: NVDAT(17/05/2021)
      */
-    onClickBtnReplicate(employeeId){
-      req(`api/v1/Employees/${employeeId}`)
-        .then((res) => {
-          this.employeeModify = res.data;
-          delete this.employeeModify.employeeId;
-          this.showEmployeeDialog(false);
-        });
-        
+    onClickBtnReplicate(employeeId) {
+      req(`api/v1/Employees/${employeeId}`).then((res) => {
+        this.employeeModify = res.data;
+        delete this.employeeModify.employeeId;
+        this.showEmployeeDialog(false);
+      });
     },
 
     /**
@@ -629,24 +666,25 @@ export default {
     closeMesasge() {
       this.requestStatus.isShowMessage = false;
     },
-    onCloseChange(){
+    onCloseChange() {
       this.setStateEmployeeChange(false);
       this.setStateEmployeeDialog(false);
     },
     cancelEmployee() {
-       this.setStateEmployeeChange(false);
-       this.setStateEmployeeDialog(true);
+      this.setStateEmployeeChange(false);
+      this.setStateEmployeeDialog(true);
     },
-    onChangeSave(){
+    onChangeSave() {
       this.setStateEmployeeChange(false);
       this.saveEmployee();
     },
-    closeDialog(){
+    closeDialog() {
       // check data is change
-       if(employeeDefault){ 
-         this.setStateEmployeeChange(true);
-       }
-    }
-  }
+      if (employeeDefault) {
+        this.setStateEmployeeChange(true);
+      }
+    },
+  },
+  //#endregion
 };
 </script>

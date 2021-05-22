@@ -15,11 +15,14 @@ namespace MISA.AMIS.Infrastructure.Repositories
 {
     public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
+        #region Constructor
         public EmployeeRepository(IConfiguration configuration) : base(configuration)
         {
 
         }
+        #endregion
 
+        #region method
         /// <summary>
         /// Kiểm tra trùng attribute của đối tượng nhân viên
         /// </summary>
@@ -122,5 +125,6 @@ namespace MISA.AMIS.Infrastructure.Repositories
             employeeCodeNum++;
             return "NV-" + employeeCodeNum;
         }
+        #endregion
     }
 }

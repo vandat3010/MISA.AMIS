@@ -32,6 +32,7 @@ namespace MISA.AMIS.Controllers
             _employeeRepository = employeeRepository;
         }
         #endregion
+
         #region method
 
         /// <summary>

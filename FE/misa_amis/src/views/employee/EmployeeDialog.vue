@@ -97,7 +97,7 @@
                       })
                     "
                   /> -->
-                  <datepicker v-model="employee.dateOfBirth" format="dd/MM/yyyy" id="date-input" placeholder="dd/mm/yyyy"/>
+                  <datepicker v-model="employee.dateOfBirth" format="dd/MM/yyyy" id="date-input" placeholder="DD/MM/YYYY"/>
                 </div>
               </div>
               <div class="col-7">
@@ -252,7 +252,7 @@
                       })
                     "
                   /> -->
-                  <datepicker v-model="employee.dateOfIN" format="dd/MM/yyyy" id="date-input" placeholder="dd/mm/yyyy"/>
+                  <datepicker v-model="employee.dateOfIN" format="dd/MM/yyyy" id="date-input" placeholder="DD/MM/YYYY"/>
                 </div>
               </div>
             </div>
@@ -442,6 +442,7 @@ export default {
     ModelListSelect,
     datepicker
   },
+  //#region biến trạng thái
   props: {
     /**
      * Prop xác định trạng thái dialog.

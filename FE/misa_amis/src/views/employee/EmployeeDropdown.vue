@@ -6,7 +6,9 @@
         <button class="btn icon icon-chevron-down-blue"></button>
       </div>
       <div class="dropdown-content right" :class="{ hide: !isShow }">
-        <div class="dropdown-item" @click.prevent="onClickReplicate">Nhân bản</div>
+        <div class="dropdown-item" @click.prevent="onClickReplicate">
+          Nhân bản
+        </div>
         <div class="dropdown-item" @click.prevent="onClickBtnDel">Xóa</div>
         <div class="dropdown-item">Ngưng sử dụng</div>
       </div>
@@ -16,6 +18,7 @@
 
 <script>
 export default {
+  //#region data
   data: () => ({
     /**
      * Biến xác định trạng thái show dropdown.
@@ -23,7 +26,9 @@ export default {
      */
     isShow: false,
   }),
+  //#endregion
 
+  //#region method
   methods: {
     /**
      * Phương thức toggle trạng thái dropdown.
@@ -54,9 +59,9 @@ export default {
      * click button nhân bản.
      * CreatedBy: NVDAT(17/05/2021)
      */
-    onClickReplicate(){
+    onClickReplicate() {
       this.toggleDropdown();
-      this.$emit("onClickBtnReplicate")
+      this.$emit("onClickBtnReplicate");
     },
     /**
      * Click button xóa.
@@ -67,10 +72,13 @@ export default {
       this.$emit("onClickBtnDel");
     },
   },
+  //#endregion method
 
+  //#region mounted
   mounted() {
     document.addEventListener("click", this.close);
   },
+  //#endregion
   beforeDestroy() {
     document.removeEventListener("click", this.close);
   },

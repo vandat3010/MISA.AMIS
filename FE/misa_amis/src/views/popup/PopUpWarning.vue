@@ -28,6 +28,7 @@
 
 <script>
 export default {
+  //#region props
   props: {
     /**
      * Prop xác định trạng thái dialog.
@@ -60,6 +61,9 @@ export default {
       },
     },
   },
+  //#endregion
+
+  //#region method
   methods: {
     /**
      * Phương thức đóng dialog.
@@ -72,5 +76,6 @@ export default {
       this.$emit("onOk");
     },
   },
+  //#endregion
 };
 </script>
