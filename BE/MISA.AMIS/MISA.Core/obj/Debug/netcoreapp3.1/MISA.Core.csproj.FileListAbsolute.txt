@@ -1,0 +1,13 @@
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\bin\Debug\netcoreapp3.1\MISA.Core.deps.json
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\bin\Debug\netcoreapp3.1\MISA.Core.dll
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\bin\Debug\netcoreapp3.1\MISA.Core.pdb
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.Properties.EmployeeResource.resources
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.Properties.Resources.resources
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.Properties.ValidationResource.resources
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.AssemblyInfo.cs
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.dll
+C:\Users\Admin\Desktop\MISA.FRESHER.TEST-web04a-mf811-dbhuan\web04a-mf811-dbhuan\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.pdb

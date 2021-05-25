@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MISA.AMIS.Api</name>
+    </assembly>
+    <members>
+        <member name="T:MISA.AMIS.Api.Controllers.BaseController`1">
+            <summary>
+            BaseController
+            </summary>
+            CreatedBy: NVDAT 19/05/2021
+        </member>
+        <member name="F:MISA.AMIS.Api.Controllers.BaseController`1._baseService">
+            <summary>
+            base service
+            </summary>
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.BaseController`1.#ctor(MISA.Core.Interfaces.Services.IBaseService{`0})">
+            <summary>
+            Phương thức khởi tạo
+            </summary>
+            <param name="baseService"></param>
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.BaseController`1.GetAll">
+            <summary>
+            Lấy tất cả thực thể T
+            </summary>
+            <returns>
+            200 - Có dữ liệu
+            204 - Không có dữ liệu
+            400 - Lỗi client
+            500 - Lỗi server
+            </returns>
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.BaseController`1.Get(System.Guid)">
+            <summary>
+            Lấy thông tin thực thể t
+            </summary>
+            <param name="id">id thực thể</param>
+            <returns>
+            200 - Có dữ liệu
+            204 - Không có dữ liệu
+            400 - Lỗi client
+            500 - Lỗi server
+            </returns>
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.BaseController`1.Insert(`0)">
+            <summary>
+            Insert một thực thể t
+            </summary>
+            <param name="t">Thông tin thực thể t</param>
+            <returns>
+            200 - Có dữ liệu
+            204 - Không có dữ liệu
+            400 - Lỗi client
+            500 - Lỗi server
+            </returns>
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.BaseController`1.Update(`0)">
+            <summary>
+            Update một thực thể t
+            </summary>
+            <param name="t">Thông tin thực thể t</param>
+            <returns>
+            200 - Có dữ liệu
+            204 - Không có dữ liệu
+            400 - Lỗi client
+            500 - Lỗi server
+            </returns>
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.BaseController`1.Delete(System.Guid)">
+            <summary>
+            Delete một thực thể t
+            </summary>
+            <param name="id">id thực thể</param>
+            <returns>
+            200 - Có dữ liệu
+            204 - Không có dữ liệu
+            400 - Lỗi client
+            500 - Lỗi server
+            </returns>
+        </member>
+        <member name="F:MISA.AMIS.Api.Controllers.EmployeeController._employeeService">
+            <summary>
+            Dịch vụ nhân viên
+            </summary>
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.EmployeeController.#ctor(MISA.Core.Interfaces.Services.IEmployeeService)">
+            <summary>
+            Hàm khởi tạo
+            </summary>
+            <param name="employeeService">dịch vụ nhân viên</param>
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.EmployeeController.GetEmployees(MISA.Core.Entities.EmployeeFilter)">
+            <summary>
+            Lấy danh sách nhân viên có lọc.
+            </summary>
+            <param name="employeeFilter">Bộ lọc nhân viên</param>
+            <returns>
+            200 - Có dữ liệu trả về
+            204 - Không có dữ liệu
+            400 - Lỗi client
+            500 - Lỗi server
+            </returns>
+            <response code="200">Có dữ liệu trả về</response>
+            CreatedBy: NVDAT (09/05/2021)
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.EmployeeController.GetNewEmployeeCode">
+            <summary>
+            Lấy mã nhân viên mới nhất
+            </summary>
+            <returns>
+            200 - Có dữ liệu trả về.
+            500 - Lỗi server.
+            </returns>
+            CreatedBy: NVDAT (10/05/2021)
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.EmployeeController.Export">
+            <summary>
+            Xuất excel
+            </summary>
+            <returns>
+            200 - thành công.
+            500 - lỗi server.
+            </returns>
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.EmployeeDepartmentController.Get(System.Guid)">
+            <summary>
+            Lấy thông tin thực thể t
+            </summary>
+            <param name="id">id thực thể</param>
+            <returns>
+            200 - Có dữ liệu
+            204 - Không có dữ liệu
+            400 - Lỗi client
+            500 - Lỗi server
+            </returns>
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.EmployeeDepartmentController.Insert(MISA.Core.Entities.EmployeeDepartment)">
+            <summary>
+            Insert một thực thể t
+            </summary>
+            <param name="t">Thông tin thực thể t</param>
+            <returns>
+            200 - Có dữ liệu
+            204 - Không có dữ liệu
+            400 - Lỗi client
+            500 - Lỗi server
+            </returns>
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.EmployeeDepartmentController.Update(MISA.Core.Entities.EmployeeDepartment)">
+            <summary>
+            Update một thực thể t
+            </summary>
+            <param name="t">Thông tin thực thể t</param>
+            <returns>
+            200 - Có dữ liệu
+            204 - Không có dữ liệu
+            400 - Lỗi client
+            500 - Lỗi server
+            </returns>
+        </member>
+        <member name="M:MISA.AMIS.Api.Controllers.EmployeeDepartmentController.Delete(System.Guid)">
+            <summary>
+            Delete một thực thể t
+            </summary>
+            <param name="id">id thực thể</param>
+            <returns>
+            200 - Có dữ liệu
+            204 - Không có dữ liệu
+            400 - Lỗi client
+            500 - Lỗi server
+            </returns>
+        </member>
+        <member name="T:MISA.AMIS.Api.Middleware.ErrorHandleMiddleware">
+            <summary>
+            ErrorHandleMiddleware
+            </summary>
+            CreatedBy: NVDAT (09/05/2021)
+        </member>
+        <member name="F:MISA.AMIS.Api.Middleware.ErrorHandleMiddleware._next">
+            <summary>
+            Luồng request.
+            </summary>
+        </member>
+        <member name="M:MISA.AMIS.Api.Middleware.ErrorHandleMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Hàm khởi tạo
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:MISA.AMIS.Api.Middleware.ErrorHandleMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Hàm call của middleware
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MISA.AMIS.Api.Middleware.ErrorHandleMiddleware.ErrorHandle(Microsoft.AspNetCore.Http.HttpContext,System.Exception)">
+            <summary>
+            Xử lý lỗi.
+            </summary>
+            <param name="context"></param>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,61 @@
+.header {
+    position: absolute;
+    left: 200px;
+    height: 48px;
+    width: calc(100% - 200px);
+    display: flex;
+    align-items: center;
+}
+
+.header .left-header {
+    position: absolute;
+    left: 10px;
+}
+
+.header .left-header .select {
+    height: 40px;
+    font-weight: bold;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.header .left-header .select:hover {
+    background-color: #e5e5e5;
+}
+
+.header .right-header {
+    position: absolute;
+    right: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.header .right-header .header-icon {
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    margin-right: 24px;
+}
+
+.header .right-header .user-profile {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    cursor: pointer;
+}
+
+.header .right-header .user-profile .avatar {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background: url('../../assets/img/Sprites.svg') no-repeat -352px -894px;
+    margin-right: 10px;
+}
+
+.header .right-header .user-profile .user-name {
+    font-weight: bold;
+    margin-right: 10px;
+}
